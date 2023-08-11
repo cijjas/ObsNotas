@@ -23,6 +23,6 @@ Se puede con observacion atenta se puede ver que siempre termina teniendo un num
 $$L= \{\omega \in \{0, 1\}^{*}: |\omega|_0 \equiv 0(2) \land |\omega|_1 \equiv 0(2) \}$$
 # 2
 
-Ver [[Autómatas Finitos Deterministicos#Minimización de un AFD]]
+Ver [[Autómatas Finitos Deterministicos#Minimización de un AFD]].
 
 
