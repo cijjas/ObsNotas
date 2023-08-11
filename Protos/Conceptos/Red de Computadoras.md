@@ -53,6 +53,9 @@ Se pueden clasificar según el servicio que **ofrecen a su nivel superior**
 
 # TCP/IP
 Sacaron capas. En su momento no eran necesarias pero despues tuvo sentido tenerlas de vuelta.
+
+TCP es un binario.
+
 ![[Pasted image 20230804180610.png]]
 
 # Encapsulamiento

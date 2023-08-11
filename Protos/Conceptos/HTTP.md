@@ -24,7 +24,7 @@
 ![[Pasted image 20230804194742.png]]
 
 # HTTP 1.1 (1999)
-> Cada recurso se identifica con una URI (Uniform Resource Identifier )
+> Cada recurso se identifica con una [[URI]] (Uniform Resource Identifier )
 - **Contenido dinámico**
 - Cabeceras en las peticiones
 - Métodos **PUT, DELETE, TRACE, OPTIONS**
@@ -32,3 +32,34 @@
 - Soporte de cache
 - Conexiones persistentes
 ![[Pasted image 20230804195117.png]]
+
+
+# HTTP 2
+- Protocolo binario
+- Compresión de headers
+- Multiplexación de recursos
+- Server push
+
+
+# Recursos [[URI]]
+- Un recurso es un bloque de información identificado por su URI
+- Puede ser un archivo (físico) o generado por un programa (abstracto)
+- [[URI#URL]]: Uniform Resource Locator
+- [[URI#URN]]: Uniform Resource Name
+
+
+---
+
+# Mensajes HTTP
+- **El cliente y el servidor intercambian mensajes HTTP**
+	- Request message (cliente → servidor)
+	- Response message (servidor → cliente)
+
+- Solicitudes (Request)
+	- **GET**: Solicita un recurso al servidor
+	- **HEAD**: Solicita solo los headers del recurso.
+	- **POST**: Envía información al servidor para ser procesada
+
+![[Pasted image 20230811173245.png]]
+- En un host podria haber muchos sitios.
+- Las paginas pueden estar cargadas en un mismo IP por decir.

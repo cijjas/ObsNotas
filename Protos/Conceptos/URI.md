@@ -1,16 +1,20 @@
-# URI
-> Un URI es una cadena de caracteres que se utiliza para identificar un recurso en Internet de manera única. Puede representar una página web, una imagen, un archivo, un servicio, entre otros. Los URIs se utilizan para acceder a recursos en la web y proporcionar una forma estándar de identificarlos.
+> Un URI es una cadena de caracteres que se utiliza para **identificar un recurso en Internet de manera única**. Puede representar una página web, una imagen, un archivo, un servicio, entre otros. Los URIs se utilizan para acceder a recursos en la web y proporcionar una forma estándar de identificarlos.
 
-> Un **identificador de recursos uniforme** o **URI** —del inglés _uniform resource identifier_— es una cadena de caracteres que identifica los recursos –físicos o abstractos– de una red de forma unívoca. La diferencia respecto a un [localizador de recursos uniforme](https://es.wikipedia.org/wiki/Localizador_de_recursos_uniforme "Localizador de recursos uniforme") ([[URI#URL]]) es que estos últimos hacen referencia a recursos que, de forma general, pueden variar en el tiempo.
+> Un **identificador de recursos uniforme** o **URI** —del inglés _uniform resource identifier_— es una cadena de caracteres que identifica los recursos –físicos o abstractos– de una red de forma unívoca. La diferencia respecto a un [localizador de recursos uniforme](https://es.wikipedia.org/wiki/Localizador_de_recursos_uniforme "Localizador de recursos uniforme") ([[#URL]]) es que estos últimos hacen referencia a recursos que, de forma general, pueden variar en el tiempo.
 
 ![[Pasted image 20230808171039.png]]
 
+## Formato URI
 Un URI consta de las siguientes partes 
+> **<[[#Esquema]]>://<[[#Autoridad]]><[[#Ruta]]>?<[[#Consulta]]>#<[[#Fragmento]]>**
 ![[Pasted image 20230808171145.png]]
+- El path termina con el primer "?" o "#" o si no hay más caracteres.
+- Puede ser relativo o absoluto.
+- Si representa una aplicación puede recibir parámetros.
 ## Esquema
-nombre que se refiere a una especificación para asignar los identificadores, e.g. `urn:`, `tag:`, `cid:`. En algunos casos también identifica el protocolo de acceso al recurso, por ejemplo `http:`, `mailto:`, `ftp:`, etc.
+Nombre que se refiere a una especificación para asignar los identificadores, e.g. `urn:`, `tag:`, `cid:`. En algunos casos también identifica el protocolo de acceso al recurso, por ejemplo `http:`, `mailto:`, `ftp:`, etc.
 ## Autoridad
-elemento jerárquico que identifica la autoridad de nombres (por ejemplo `//www.example.com`).
+Elemento jerárquico que identifica la autoridad de nombres (por ejemplo `//www.example.com`).
 ## Ruta
 Información usualmente organizada en forma jerárquica, que identifica al recurso en el ámbito del esquema URI y la autoridad de nombres (e.g. `/domains/example`).
 ## Consulta
@@ -22,7 +26,19 @@ Permite identificar una parte del recurso principal, o vista de una representaci
 
 # URL
 > Una URL es un tipo específico de URI que proporciona la ubicación exacta de un recurso en la web, junto con el método para acceder a él. Una URL consta de varios componentes, como el esquema (protocolo utilizado, como "http" o "https"), el dominio (nombre del sitio web), el puerto, la ruta y, opcionalmente, parámetros y fragmentos. Ejemplo: `https://www.ejemplo.com/pagina`.
-
+![[Pasted image 20230811172005.png]]
+![[Pasted image 20230811172105.png]]
 # URN
 > Un URN es otro tipo de URI que se utiliza para identificar un recurso de manera única sin necesariamente indicar su ubicación o método de acceso. A diferencia de las URLs, los URNs no están vinculados a la ubicación física del recurso en la web. Ejemplo de URN: `urn:isbn:0451450523` para identificar un libro por su número ISBN.
+- Identifica un recurso por su nombre
+- No implica que el recurso exista o cómo acceder a él
+![[Pasted image 20230811172348.png]]
 
+
+# URI Scheme
+- URIs pueden ser usadas para acceder a recursos, ya sea por medio de URL o URN
+Ejemplo en html
+```html
+<a href="/img/logo.png">
+<a href="urn:isbn:0453457513">
+```
