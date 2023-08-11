@@ -26,3 +26,4 @@ $$L= \{\omega \in \{0, 1\}^{*}: |\omega|_0 \equiv 0(2) \land |\omega|_1 \equiv 0
 Ver [[Autómatas Finitos Deterministicos#Minimización de un AFD]].
 
 
+# 4
