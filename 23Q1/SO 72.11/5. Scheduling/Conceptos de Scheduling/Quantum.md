@@ -1,0 +1,1 @@
+Normalmente clasificado con $\tau$, el quantum es el tiempo de ejecucion preestablecido por el sistema operativo. Se establece para los algoritmos de Scheduling que son preemptive.

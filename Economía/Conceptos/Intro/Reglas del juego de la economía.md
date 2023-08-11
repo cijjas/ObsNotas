@@ -1,0 +1,5 @@
+- Todos queremos más, pero debemos elegir con criterios adecuados.
+- El costo de una cosa es aquello a lo que se renuncia para conseguirla.
+- Hay que entender la forma en que los economistas realizan sus análisis.
+- Los economistas no solo tratan de conocer la realidad, en ocasiones se ocupan también detransformarla.
+- La Economía necesita simplificar la realidad : los modelos

@@ -1,0 +1,7 @@
+- Estudia la economía en su conjunto: Agregados Económicos.
+- Problemas que estudia la Macroeconomía:
+	- Por qué algunas naciones son más ricas que otras y porqué algunas crecen más rápidamente;
+	- Evolución de Agregados: Consumo, Inversión,Gasto delGobierno, Exportaciones...y su impacto en el bienestarglobal;*Problemas de Inflación y Desempleo. Trade-offs;
+	- Ciclos Económicos / Crisis y Desequilibrios;
+	- Déficits Fiscales y su impacto. Proceso Ahorro-Inversión;
+	- Precios Básicos de la Economía

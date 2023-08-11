@@ -1,0 +1,6 @@
+1. ![[Pasted image 20230713190422.png]]
+2. ![[Pasted image 20230713190433.png]]
+3. ![[Pasted image 20230713190446.png]]
+4. ![[Pasted image 20230713190459.png]]
+5. ![[Pasted image 20230713190535.png]]
+6. ![[Pasted image 20230713190550.png]]

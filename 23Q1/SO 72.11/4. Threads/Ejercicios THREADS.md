@@ -1,0 +1,1 @@
+1. Desarrolle un programa que mediante el uso de threads threads(7) tenga una condición de carrera. Por ejemplo, varios threadsincrementando una variable sin mecanismos de sincronización. Luego resuelva la condición de carrera mediante el uso de semáforos.
