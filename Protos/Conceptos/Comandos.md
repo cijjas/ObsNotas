@@ -68,3 +68,5 @@ nc 127.0.0.1 9090 #writing to 127... on port 9090
 - -l indica que tiene que estar listening
 - socket pasivo: el que espera recibir (escucha) (trolita) 
 - socket activo: EL MACHO
+
+## [[cURL]]

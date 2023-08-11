@@ -50,16 +50,7 @@
 
 ---
 
-# Mensajes HTTP
-- **El cliente y el servidor intercambian mensajes HTTP**
-	- Request message (cliente → servidor)
-	- Response message (servidor → cliente)
+La forma que toman los request y responses del protocolor HTTP se explica en [[Mensajes HTTP]]. Cuando hay interacción de requests con servidores se usan [[Proxy Servers]] para tener un tipo de cache y facilitar las búsquedas rápidas. Además existen las [[Cookies]] que guardan info en el browser para mantener un tipo de memoria.
 
-- Solicitudes (Request)
-	- **GET**: Solicita un recurso al servidor
-	- **HEAD**: Solicita solo los headers del recurso.
-	- **POST**: Envía información al servidor para ser procesada
+---
 
-![[Pasted image 20230811173245.png]]
-- En un host podria haber muchos sitios.
-- Las paginas pueden estar cargadas en un mismo IP por decir.
