@@ -1,3 +1,5 @@
+[Drive de la materia (Material)](https://drive.google.com/drive/u/1/folders/1IzoSBcLlCac7pMZcgjdvKrKyLSdobenA)
+
 ![[guia-practica-r0.pdf]]
 
 # 1
@@ -166,3 +168,6 @@ Si ahora yo hago
 `echo -e "Hello, world" | nc -l -p 9090`
 ![[Pasted image 20230809093238.png]]
 ![[Pasted image 20230809093501.png]]
+
+
+## 20
