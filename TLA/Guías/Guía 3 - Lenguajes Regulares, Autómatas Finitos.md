@@ -226,6 +226,7 @@ X --> E0 : 3, 6, 9
 E0 --> E0 : 0,3, 6, 9
 E0 --> E1 : 2, 5, 8
 E0 --> E2 : 1, 4, 7
+E0 --> [*]
 X --> E1 : 2, 5, 8
 E1 --> E0 : 1, 4, 7
 E1 --> E1 : 2, 5, 8
@@ -245,15 +246,16 @@ stateDiagram
 direction LR
 [*] --> p
 p --> q : a
-q --> p : b
 p --> p : b
-q --> r : a
-r --> q : a
-p --> [*]
-q --> [*]
-r --> [*]
-
+q --> q : a 
+q --> r : b
+r --> p : b
+r --> s : a
+s --> r : b
+s --> t : a
+t --> q : a
 ```
+
 ## D
 Palabras que no tengan más de 3 a's
 
@@ -341,3 +343,24 @@ stateDiagram
 0 --> 3
 6 --> [*]
 ```
+
+# 5
+$$
+\{\{s, t, u, v\}, \{p,q,r\}\}
+$$
+$$
+\begin{cases}
+\delta(p, a) = r \in C_2 & \delta(p, b) = t \in C_1& \delta(p, c) = q \in C_2\\
+\delta(q, a) = q \in C_2 & \delta(q, b) = v \in C_1& \delta(q, c) = p \in C_2\\
+\delta(r, a) = p \in C_2 & \delta(r, b) = u \in C_1 & \delta(r, c) = r \in C_2\\
+\end{cases}
+$$
+$$
+\begin{cases}
+\delta(s, a) = q \in C_2 & \delta(p, b) = t \in C_1& \delta(p, c) = u \in C_1\\
+\delta(t, a) = t \in C_1 & \delta(t, b) = v \in C_1& \delta(t, c) = u \in C_1\\
+\delta(u, a) = t \in C_1 & \delta(u, b) = t \in C_1 & \delta(
+u, c) = v \in C_1\\
+\delta(v, a) = u \in C_1 & \delta(v, b) = u \in C_1 & \delta(v, c) = t \in C_1\\
+\end{cases}
+$$
