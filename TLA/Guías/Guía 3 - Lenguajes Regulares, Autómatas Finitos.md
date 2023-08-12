@@ -44,9 +44,35 @@ F-->|b|F
 $$\frac{Q}{E_0}= \{F, Q-F\} = \{\{q, r\}, \{p,s,t,u\}\}$$
 Ahora tengo que ver dentro de cada clase cuales de los pares producen una una cadena dentro de la misma clase.
 Por ejemplo:
-$\delta(q, a) = $
 
+$\delta(q, a) = r \in C_1 ~~~~~~~~ \delta(q, b) = s \in C_2$
+$\delta(r, a) = q \in C_1 ~~~~~~~~ \delta(r, b) = t \in C_2$
 
-$$\frac{Q}{E_1} = \{\}$$
+Por otro lado analizando $C_2$
+$\delta(p, a) = q \in C_1 ~~~~~~~~ \delta(p, b) = p \in C_2$
+$\delta(s, a) = t \in C_2 ~~~~~~~~ \delta(s, b) = u \in C_2$
+$\delta(t, a) = s \in C_2 ~~~~~~~~ \delta(t, b) = u \in C_2$
+$\delta(u, a) = q \in C_1 ~~~~~~~~ \delta(u, b) = u \in C_2$
 
+Vemos que no nos lleva a la misma clase
+$\Rightarrow \{C_1= \{q, r\} ,C_2 = \{s,t\}, C_3= \{p,u\}\}$
+
+Nos queda que 
+$\delta(s, a) = t \in C_2 ~~~~~~~~ \delta(s, b) = u \in C_3$
+$\delta(t, a) = s \in C_2 ~~~~~~~~ \delta(t, b) = u \in C_3$
+y
+$\delta(p, a) = q \in C_1 ~~~~~~~~ \delta(p, b) = p \in C_3$
+$\delta(u, a) = q \in C_1 ~~~~~~~~ \delta(u, b) = u \in C_3$
+
+De esto podemos graficar
+```mermaid
+flowchart LR;
+A(((R)))-->|a|A
+A-->|b|B
+B((Q))-->|a|B
+B-->|b|C
+*-->C
+C(P)-->|a|A
+C-->|b|C
+```
 
