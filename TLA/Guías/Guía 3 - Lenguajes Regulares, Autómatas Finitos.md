@@ -212,13 +212,30 @@ p --> [*]
 
 ## B
 $n \in \mathbb{N} : n \equiv 0(3)$
+por ejemplo 4->3
+- Estado 0 : multiplo de 3
+- Estado 1 : módulo 1 
+- Estado 2 : módulo 2
+
 ```mermaid
 stateDiagram-v2
 direction LR
-[*] --> 3
-3 --> 3 : x
-3 --> [*]
+[*] --> X
+X --> N : 0
+X --> E0 : 3, 6, 9
+E0 --> E0 : 0,3, 6, 9
+E0 --> E1 : 2, 5, 8
+E0 --> E2 : 1, 4, 7
+X --> E1 : 2, 5, 8
+E1 --> E0 : 1, 4, 7
+E1 --> E1 : 2, 5, 8
+E1 --> E2 : 0,3, 6, 9
+X --> E2 : 1, 4, 7
+E2 --> E0 : 2, 5, 8
+E2 --> E1 : 0,3, 6, 9
+E2 --> E2 : 1, 4, 7
 ```
+
 
 ## C
 Palabras que no tengan $abaab$
@@ -292,8 +309,35 @@ X --> Tesla : 3
 Tesla --> Nietzsche : 1
 Tesla --> Ingenieros : 2
 Tesla --> Tesla : 3
-Nietzsche --> [*]
+Nietzsche --> [*] : 2
 ```
 
 # 4
+> Se cuenta con una canilla y dos jarras, una tiene una capacidad de 4 litros y la otra es de 3 litros.
 
+¿Es posible obtener 2 litros de agua en una de las jarras? Modelar el problema con un AFD y escribir una secuencia de configuraciones que lleve a la solución.
+
+$B1 :$ botella de 3 litros
+$B2 :$ botella de 4 litros
+
+- Estado 0 : botellas vacias.
+- Estado 1 : botella de 3 litros llena y la de 4 vacia.
+- Estado 2 : botella de 3 litros vacia y la de 4 llena.
+- Estado 3 : botella de 3 litros llena y la de 4 llena.
+- Estado 4 : botella de 4 litros con 3 litros y la de 3 litros vacia
+- Estado 5 : B1 y B2 con 3 litros
+- Estado 6 : 4 litros en B2 y 2 litros en B1
+- Estado A : botella con 2 litros
+
+```mermaid
+stateDiagram
+[*] --> 0
+0 --> 1 : Llenamos B1
+1 --> 4 : Vertimos B1 en B2
+4 --> 5 : Llenamos B1
+5 --> 6 : Vertimos 1 litro de B1 en B2
+0 --> 2 : Llenamos B2
+2 --> 3B : Vertimos 3 
+0 --> 3
+6 --> [*]
+```
