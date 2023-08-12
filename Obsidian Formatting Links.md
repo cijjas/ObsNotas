@@ -1,6 +1,5 @@
 # Mermaid graphs
-https://github.com/mermaid-js/mermaid
-
+https://mermaid.js.org/syntax/stateDiagram.html
 # Latex math symbols
 https://oeis.org/wiki/List_of_LaTeX_mathematical_symbols
 

@@ -23,6 +23,7 @@ Se puede con observacion atenta se puede ver que siempre termina teniendo un num
 $$L= \{\omega \in \{0, 1\}^{*}: |\omega|_0 \equiv 0(2) \land |\omega|_1 \equiv 0(2) \}$$
 # 2
 
+## A
 Ver [[Autómatas Finitos Deterministicos#Minimización de un AFD]].
 
 ```mermaid
@@ -64,7 +65,8 @@ y
 $\delta(p, a) = q \in C_1 ~~~~~~~~ \delta(p, b) = p \in C_3$
 $\delta(u, a) = q \in C_1 ~~~~~~~~ \delta(u, b) = u \in C_3$
 
-De esto podemos graficar
+De esto podemos graficar, obtener el Autómata Mínimo y hacer la tabla
+$$A = <\{P,Q,R\},\{a,b\}, \delta, P, R>$$
 ```mermaid
 flowchart LR;
 A(((R)))-->|a|A
@@ -74,5 +76,86 @@ B-->|b|C
 *-->C
 C(P)-->|a|A
 C-->|b|C
+```
+
+| $\delta$ | a |  b|
+|-------------|-| - |
+|$P$ |$R$ |$P$ |
+|$Q$ |$Q$ |$P$|
+|$R$ | $R$| $Q$|
+
+
+## B
+
+$$\frac{Q}{E_0} = \{\{q_3,q_4,q_5\}, \{\bar{q_0}, q_1, q_2\}\}$$
+
+$$C_2:\begin{cases}\delta(q_0, 0) = q_1 \in C_2 ~~~~ \delta(q_0, 1) = q_2 \in C_2\\\delta(q_1, 0) = q_2 \in C_2 ~~~~  \delta(q_1, 1) = q_3 \in C_1\\\delta(q_2, 0) = q_2 \in C_2 ~~~~ \delta(q_2, 1) = q_4 \in C_1\end{cases}$$
+$$C_1:\begin{cases}\delta(q_3, 0) = q_3 \in C_1 ~~~~ \delta(q_3, 1) = q_3 \in C_1\\\delta(q_4, 0) = q_4 \in C_1 ~~~~ \delta(q_4, 1) = q_4 \in C_1\\\delta(q_5, 0) = q_5 \in C_1 ~~~~ \delta(q_5, 1) = q_4 \in C_1\end{cases}$$
+Vemos que en $C_2$ vamos a dividir en dos clases distintas $C_2$ y $C_3$
+$$\frac{Q}{E_1} = \{\underbrace{\{q_3, q_4, q_5\}}_{C_1=q_1},\underbrace{ \{q_1,q_2\}}_{C_2 = q_2}, \underbrace{\{\bar{q_0}\}}_{C_3 = q_0}\}$$
+$$C_2:\begin{cases}\delta(q_1, 0) = q_2 \in C_2 ~~~~  \delta(q_1, 1) = q_3 \in C_1\\\delta(q_2, 0) = q_2 \in C_2 ~~~~ \delta(q_2, 1) = q_4 \in C_1\end{cases}$$
+$$C_3 : \begin{cases}\delta(q_0, 0) = q_1 \in C_2 ~~~~ \delta(q_0, 1) = q_2 \in C_2\end{cases}$$
+
+$$C_1:\begin{cases}\delta(q_3, 0) = q_3 \in C_1 ~~~~ \delta(q_3, 1) = q_3 \in C_1\\\delta(q_4, 0) = q_4 \in C_1 ~~~~ \delta(q_4, 1) = q_4 \in C_1\\\delta(q_5, 0) = q_5 \in C_1 ~~~~ \delta(q_5, 1) = q_4 \in C_1\end{cases}$$
+
+Luego ya no hay elementos de las clases que vayan a elementos diferentes que no pertenecen a la clase propia, entonces finalizamos.
+```mermaid
+stateDiagram-v2
+direction LR
+[*] --> q0
+q0 --> q2 : 1,0
+q2 --> q2 : 0
+q2 --> q1 : 1
+q1 --> q1 : 1,0
+q1 --> [*]
+```
+
+## C
+
+$$\frac{Q}{E_0} = \{q_5, \{q_0, \ldots, q_4\}\}$$
+$$
+C_2\begin{cases}
+\delta(q_0, a) = q_1 \in C_2 ~~~~~~~~  \delta(q_0, b) = q_2 \in C_2\\
+\delta(q_1, a) = q_3 \in C_2 ~~~~~~~~  \delta(q_1, b) = q_4 \in C_2\\
+\delta(q_2, a) = q_4 \in C_2 ~~~~~~~~  \delta(q_2, b) = q_3 \in C_2\\
+\begin{rcases}
+	\delta(q_3, a) = q_5 \in C_1 &&  \delta(q_3, b)= q_4 \in C_2 \\
+	\delta(q_4, a) = q_5 \in C_1 &&  \delta(q_4, b) = q_3 \in C_2\\
+\end{rcases} ~diferentes
+\end{cases}
+$$
+
+Continuo separando
+$$\frac{Q}{E_1} = \{q_5, \{q_0, q_1, q_2\}, \{q_3, q_4\}\}$$
+
+$$
+C_2\begin{cases}
+\delta(q_0, a) = q_1 \in C_2 &&  \delta(q_0, b) = q_2 \in C_2\\
+\delta(q_1, a) = q_3 \in C_3 &&  \delta(q_1, b) = q_4 \in C_3\\
+\delta(q_2, a) = q_4 \in C_3 &&  \delta(q_2, b) = q_3 \in C_3\\
+\end{cases}
+$$
+
+$$
+C_3
+\begin{cases}
+	\delta(q_3, a) = q_5 \in C_1 &&  \delta(q_3, b)= q_4 \in C_3 \\
+	\delta(q_4, a) = q_5 \in C_1 &&  \delta(q_4, b) = q_3 \in C_3\\
+\end{cases}
+$$
+
+Vuelvo a separar pues en $C_2$ tenemos elementos que van a diferentes clases:
+$$\frac{Q}{E_2} 
+= \{
+\underbrace{q_5 }_{C_1},
+\underbrace{q_0 }_{C_2},
+\underbrace{\{q_1, q_2\} }_{C_3},
+\underbrace{\{q_3, q_4\}}_{C_4}\}
+$$
+Y acá ya queda bien definido. Luego nos queda:
+```mermaid
+stateDiagram-v2
+direction LR
+[*] --> q0
 ```
 
