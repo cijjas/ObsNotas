@@ -92,21 +92,27 @@ $$\frac{Q}{E_0} = \{\{q_3,q_4,q_5\}, \{\bar{q_0}, q_1, q_2\}\}$$
 $$
 C_2:
 \begin{cases}
-\delta(q_0, 0) = q_1 \in C_2 ~~~~ \delta(q_0, 1) = q_2 \in C_2\\
-\delta(q_1, 0) = q_2 \in C_2 ~~~~  \delta(q_1, 1) = q_3 \in C_1\\
-\delta(q_2, 0) = q_2 \in C_2 ~~~~ \delta(q_2, 1) = q_4 \in C_1\end{cases}
+	\delta(q_0, 0) = q_1 \in C_2 ~~~~ \delta(q_0, 1) = q_2 \in C_2\\
+	\delta(q_1, 0) = q_2 \in C_2 ~~~~  \delta(q_1, 1) = q_3 \in C_1\\
+	\delta(q_2, 0) = q_2 \in C_2 ~~~~ \delta(q_2, 1) = q_4 \in C_1\end{cases}
 $$
 $$
 C_1:
 \begin{cases}
-\delta(q_3, 0) = q_3 \in C_1 ~~~~ \delta(q_3, 1) = q_3 \in C_1\\
-\delta(q_4, 0) = q_4 \in C_1 ~~~~ \delta(q_4, 1) = q_4 \in C_1\\
-\delta(q_5, 0) = q_5 \in C_1 ~~~~ \delta(q_5, 1) = q_4 \in C_1
+	\delta(q_3, 0) = q_3 \in C_1 ~~~~ \delta(q_3, 1) = q_3 \in C_1\\
+	\delta(q_4, 0) = q_4 \in C_1 ~~~~ \delta(q_4, 1) = q_4 \in C_1\\
+	\delta(q_5, 0) = q_5 \in C_1 ~~~~ \delta(q_5, 1) = q_4 \in C_1
 \end{cases}
 $$
 Vemos que en $C_2$ vamos a dividir en dos clases distintas $C_2$ y $C_3$
 $$\frac{Q}{E_1} = \{\underbrace{\{q_3, q_4, q_5\}}_{C_1=q_1},\underbrace{ \{q_1,q_2\}}_{C_2 = q_2}, \underbrace{\{\bar{q_0}\}}_{C_3 = q_0}\}$$
-$$C_2:\begin{cases}\delta(q_1, 0) = q_2 \in C_2 ~~~~  \delta(q_1, 1) = q_3 \in C_1\\\delta(q_2, 0) = q_2 \in C_2 ~~~~ \delta(q_2, 1) = q_4 \in C_1\end{cases}$$
+$$
+C_2:
+\begin{cases}
+	\delta(q_1, 0) = q_2 \in C_2 ~~~~  \delta(q_1, 1) = q_3 \in C_1\\
+	\delta(q_2, 0) = q_2 \in C_2 ~~~~ \delta(q_2, 1) = q_4 \in C_1
+\end{cases}
+$$
 $$
 C_3 : 
 \begin{cases}\delta(q_0, 0) = q_1 \in C_2 ~~~~ \delta(q_0, 1) = q_2 \in C_2
@@ -116,9 +122,9 @@ $$
 $$
 C_1:
 \begin{cases}
-\delta(q_3, 0) = q_3 \in C_1 ~~~~ \delta(q_3, 1) = q_3 \in C_1\\
-\delta(q_4, 0) = q_4 \in C_1 ~~~~ \delta(q_4, 1) = q_4 \in C_1\\
-\delta(q_5, 0) = q_5 \in C_1 ~~~~ \delta(q_5, 1) = q_4 \in C_1
+	\delta(q_3, 0) = q_3 \in C_1 ~~~~ \delta(q_3, 1) = q_3 \in C_1\\
+	\delta(q_4, 0) = q_4 \in C_1 ~~~~ \delta(q_4, 1) = q_4 \in C_1\\
+	\delta(q_5, 0) = q_5 \in C_1 ~~~~ \delta(q_5, 1) = q_4 \in C_1
 \end{cases}
 $$
 
@@ -190,3 +196,104 @@ s --> s : b
 ```
 
 # 3
+## A
+Palabras donde b es precedido inmediatamente por a.
+
+```mermaid
+stateDiagram-v2
+direction LR
+[*] --> p
+p --> p : a
+p --> q : b
+q --> p : a
+p --> [*]
+```
+
+
+## B
+$n \in \mathbb{N} : n \equiv 0(3)$
+```mermaid
+stateDiagram-v2
+direction LR
+[*] --> 3
+3 --> 3 : x
+3 --> [*]
+```
+
+## C
+Palabras que no tengan $abaab$
+
+```mermaid
+stateDiagram
+direction LR
+[*] --> p
+p --> q : a
+q --> p : b
+p --> p : b
+q --> r : a
+r --> q : a
+p --> [*]
+q --> [*]
+r --> [*]
+
+```
+## D
+Palabras que no tengan más de 3 a's
+
+```mermaid
+stateDiagram 
+direction LR
+[*] --> p
+p --> q : a
+p --> p : b
+q --> r : a
+q --> q : b
+r --> r : b
+r --> s : a
+s --> s : b
+p --> [*]
+q --> [*]
+r --> [*]
+s --> [*]
+
+```
+## E
+$L = \{x:x\in\{1, 2, 3\}^{*} \land |x| \gt 0\}$
+Y sea $x = x_0x_1\ldots x_n2 \Rightarrow (\sum_{i = 0}^nx_i) + 2\equiv 0(3) \qquad n \geq 1$
+
+Hay que separar los estados posibles
+- Nietzsche: Estado 0 : la suma es $(\sum_{i = 0}^nx_i) + 2 = 0\mod(3)$
+	- Suma 1 : se mueve al estado 1
+	- Suma 2 : se mueve al estado 2
+	- Suma 3 : se mueve al estado 0
+- Ingenieros: Estado 1 : la suma es $(\sum_{i = 0}^nx_i) + 2 = 1\mod(3)$
+	- Suma 1 : se mueve al estado 2
+	- Suma 2 : se mueve al estado 0
+	- Suma 3 : se mueve al estado 1
+- Tesla :Estado 2 : la suma es $(\sum_{i = 0}^nx_i) + 2 = 2\mod(3)$
+	- Suma 1 : se mueve al estado 0
+	- Suma 2 : se mueve al estado 1
+	- Suma 3 : se mueve al estado 2
+
+Desde un inicio se puede decir que se encuentra en el **estado 1** pues el 2 está asegurado. El unico nodo de aceptación va a ser el de estado 0 ya que este es el que me dice que es multiplo de 3.
+```mermaid
+stateDiagram
+direction LR
+[*] --> X 
+X --> Nietzsche: 1
+Nietzsche --> Ingenieros : 1
+Nietzsche --> Tesla : 2
+Nietzsche --> Nietzsche : 3
+X --> Ingenieros : 2
+Ingenieros --> Tesla : 1
+Ingenieros --> Nietzsche : 2
+Ingenieros --> Ingenieros : 3
+X --> Tesla : 3
+Tesla --> Nietzsche : 1
+Tesla --> Ingenieros : 2
+Tesla --> Tesla : 3
+Nietzsche --> [*]
+```
+
+# 4
+
