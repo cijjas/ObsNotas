@@ -147,15 +147,22 @@ $$
 Vuelvo a separar pues en $C_2$ tenemos elementos que van a diferentes clases:
 $$\frac{Q}{E_2} 
 = \{
-\underbrace{q_5 }_{C_1},
-\underbrace{q_0 }_{C_2},
-\underbrace{\{q_1, q_2\} }_{C_3},
-\underbrace{\{q_3, q_4\}}_{C_4}\}
+\underbrace{q_5 }_{C_1 = p},
+\underbrace{q_0 }_{C_2 = q},
+\underbrace{\{q_1, q_2\} }_{C_3 = r},
+\underbrace{\{q_3, q_4\}}_{C_4 = s}\}
 $$
 Y acá ya queda bien definido. Luego nos queda:
 ```mermaid
 stateDiagram-v2
 direction LR
-[*] --> q0
+[*] --> q
+p --> [*]
+p --> p : a, b
+q --> r : a, b
+r --> s : a, b
+s --> p : a
+s --> s : b
 ```
 
+# 3
