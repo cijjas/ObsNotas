@@ -38,7 +38,7 @@ $[q_0, 01]\mapsto [q_1, 1] \mapsto [q_3, \lambda]$
 > - Un estado $q_i \in Q$ es **accesible** si $\exists \alpha \in \Sigma^{*}/ [q_0, \alpha] \mapsto ^{*} [q_i, \lambda]$
 
 #### Estados equivalentes o indistinguibles
-> Los estados p y q son indistinguibles si para toda cadena de entrada $\omega$, $\hat{\delta}(p, \omega)$ es un estado de aceptación (estado final) si y sólo si $\hat{\delta}(q, \omega)$ es un estado de aceptación.
+> Los estados p y q son indistinguibles si para toda cadena de entrada $\omega$, $\hat{\delta}(p, \omega)$ es un estado de aceptación (estado f![[Pasted image 20230809172822.png]]inal) si y sólo si $\hat{\delta}(q, \omega)$ es un estado de aceptación.
 > Simbólicamente, **p indistinguible de q si**
 > $\forall \omega \in \Sigma^{*} : \hat{\delta}(p, \omega) \in F \iff \hat{\delta}(q, \omega) \in F$
 

@@ -7,14 +7,14 @@ Dibujamos el grafo que se genera dada la tabla.
 
 ```mermaid
 flowchart LR;
-A(((q0)))-->|0|B(q2)
-A(q0)-->|1|C(q1)
-C(q1)-->|0|D(q3)
-C(q1)-->|1|A(q0)
-B(q2)-->|0|A(q0)
-B(q2)-->|1|D(q3)
-D(q3)-->|0|C(q1)
-D(q3)-->|1|B(q2)
+A(((q0)))-->|0|B
+A-->|1|C
+C((q1))-->|0|D
+C-->|1|A
+B((q2))-->|0|A
+B-->|1|D
+D((q3))-->|0|C
+D-->|1|B
 ```
 
 Ejemplos posibles del diagrama:
@@ -25,5 +25,28 @@ $$L= \{\omega \in \{0, 1\}^{*}: |\omega|_0 \equiv 0(2) \land |\omega|_1 \equiv 0
 
 Ver [[Autómatas Finitos Deterministicos#Minimización de un AFD]].
 
+```mermaid
+flowchart LR;
+A((p))-->|a|B
+A-->|b|A
+B(((q)))-->|a|C
+B-->|b|D
+C(((r)))-->|a|B
+C-->|b|E
+D((s))-->|a|E
+D-->|b|F
+E((t))-->|a|D
+E-->|b|F
+F((u))-->|a|B
+F-->|b|F
+```
 
-# 4.
+$$\frac{Q}{E_0}= \{F, Q-F\} = \{\{q, r\}, \{p,s,t,u\}\}$$
+Ahora tengo que ver dentro de cada clase cuales de los pares producen una una cadena dentro de la misma clase.
+Por ejemplo:
+$\delta(q, a) = $
+
+
+$$\frac{Q}{E_1} = \{\}$$
+
+
