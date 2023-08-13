@@ -350,17 +350,46 @@ $$
 $$
 $$
 \begin{cases}
-\delta(p, a) = r \in C_2 & \delta(p, b) = t \in C_1& \delta(p, c) = q \in C_2\\
-\delta(q, a) = q \in C_2 & \delta(q, b) = v \in C_1& \delta(q, c) = p \in C_2\\
-\delta(r, a) = p \in C_2 & \delta(r, b) = u \in C_1 & \delta(r, c) = r \in C_2\\
-\end{cases}
-$$
-$$
-\begin{cases}
-\delta(s, a) = q \in C_2 & \delta(p, b) = t \in C_1& \delta(p, c) = u \in C_1\\
+\delta(s, a) = q \in C_2 & \delta(s, b) = t \in C_1& \delta(p, c) = u \in C_1\\
 \delta(t, a) = t \in C_1 & \delta(t, b) = v \in C_1& \delta(t, c) = u \in C_1\\
 \delta(u, a) = t \in C_1 & \delta(u, b) = t \in C_1 & \delta(
 u, c) = v \in C_1\\
 \delta(v, a) = u \in C_1 & \delta(v, b) = u \in C_1 & \delta(v, c) = t \in C_1\\
 \end{cases}
 $$
+$$
+\begin{cases}
+\delta(p, a) = r \in C_2 & \delta(p, b) = t \in C_1& \delta(p, c) = q \in C_2\\
+\delta(q, a) = q \in C_2 & \delta(q, b) = v \in C_1& \delta(q, c) = p \in C_2\\
+\delta(r, a) = p \in C_2 & \delta(r, b) = u \in C_1 & \delta(r, c) = r \in C_2\\
+\end{cases}
+$$
+
+Separo las que son de clases diferentes
+$$
+\Rightarrow 
+\begin{cases}
+\delta(t, a) = t \in C_1 & \delta(t, b) = v \in C_1& \delta(t, c) = u \in C_1\\
+\delta(u, a) = t \in C_1 & \delta(u, b) = t \in C_1 & \delta(
+u, c) = v \in C_1\\
+\delta(v, a) = u \in C_1 & \delta(v, b) = u \in C_1 & \delta(v, c) = t \in C_1\\
+\end{cases}
+$$
+$$
+\begin{cases}
+\delta(s, a) = q \in C_2 & \delta(p, b) = t \in C_1& \delta(p, c) = u \in C_1\\
+\end{cases}
+$$
+```mermaid
+stateDiagram
+direction LR
+[*] --> q
+q --> q : a, c
+q --> p : b
+p --> p : a, b,c
+r --> q : a
+r --> p : a ,c
+r --> [*]
+p --> [*]
+
+```
