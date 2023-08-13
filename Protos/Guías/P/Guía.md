@@ -244,8 +244,46 @@ CURL +
 
 
 ## 22
-
 ![[Pasted image 20230813185005.png]]
 
 ![[Pasted image 20230813185101.png]]
+
+Fijarse en la sutil diferencia que en el primer HTTP request se retorna 200 OK y se empieza a descargar, en cambio en el --continue, retorna 206 Partial Content, que indica que la respuesta ya no es el iso entero sino solo la parte que falta.
+
+
+# HTTP: Funcionalidades que provee el protocolo
+
+
+## 23
+El protocolo HTTP especifica que el header en su totalidad es case insensitive. Entonces sí, son equivalentes.
+
+## 24
+1. Chunked significa que la información en el body está fragmentada y por ejemplo. **Permite que el contenido se transmita mientras se genera, en lugar de esperar a que se complete todo el contenido antes de enviarlo**.
+	1. Por ejemplo 
+```makefile
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Transfer-Encoding: chunked
+
+25
+Este es el primer trozo.
+1A
+Este es el segundo trozo.
+0
+```
+
+2. Otras codificaciones
+	1. gzip: contenido comprimito con DEFLATE
+	2. deflate : parecido al anterior
+	3. binario
+	4. brotoli, mejor que gzip en compresion pero mas lento
+	5. identity, la default sin compresión ni codificacion, nada raro.
+
+
+3. Sirven para mandar contenido dependiendo de cuál es la utilidad posible. Que es esta pregunta man. Si vos queres un jueguito re pesado mandarás la data comprimida, si queres descargar cosas sin saber su tamaño vas por chunked y así cada caso es diferente.
+4. Eeeeeee
+5. Cada tipo de codificación tiene un propósito específico y se utiliza en función de las necesidades de transmisión de contenido, eficiencia y compatibilidad con los agentes de usuario.
+
+## 25
+
 
