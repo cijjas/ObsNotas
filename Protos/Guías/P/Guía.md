@@ -171,3 +171,61 @@ Si ahora yo hago
 
 
 ## 20
+```bash
+echo -e "GET / HTTP/1.1\r\n\r\n" | nc www.google.com.ar 80
+```
+### A
+El código de respuesta del servidor es "200 OK", significa que el pedido fue procesado y entendio (el GET). El encabezado requerido que debe estar presente en la respuesta es **Content-Type**, que indica el tipo de contenido que se está devolviendo.
+
+Acá el header de respuesta:![[Pasted image 20230813182429.png]]
+### B
+```bash
+echo -e "GET /search HTTP/1.1\r\nHost: www.google.com.ar\r\n\r\n" | nc www.google.com.ar 80
+```
+```bash
+HTTP/1.1 302 Found
+Location: http://www.google.com.ar/webhp
+Cache-Control: private
+Content-Type: text/html; charset=UTF-8
+Content-Security-Policy: object-src 'none';base-uri 'self';script-src 'nonce-q8nnim2M5ICW-iWWX9kT7Q' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/xsrp
+P3P: CP="This is not a P3P policy! See g.co/p3phelp for more info."
+Date: Sun, 13 Aug 2023 21:25:53 GMT
+Server: gws
+Content-Length: 227
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: 1P_JAR=2023-08-13-21; expires=Tue, 12-Sep-2023 21:25:53 GMT; path=/; domain=.google.com.ar; Secure
+Set-Cookie: AEC=Ad49MVETtrsatuYGEWoSUy4UQiSySU3mdv5Fl8iQS8zULGk74fKgAukwArY; expires=Fri, 09-Feb-2024 21:25:53 GMT; path=/; domain=.google.com.ar; Secure; HttpOnly; SameSite=lax
+Set-Cookie: NID=511=kaRO97Zp2m-cuMsP_RN4XnR0i9bXaPegDatXk6JcByVgV5gEc0egD9k31WrWOoQUIywh3fXqNU59EE3I0V7y4DaOjqMRR6U5q66gfGwUL5aEp_rc-6O412AgprurR-FD7gdVapcmnABFtiAlEk7T5p__3QEScuJ6uIVsbn2eec4; expires=Mon, 12-Feb-2024 21:25:53 GMT; path=/; domain=.google.com.ar; HttpOnly
+
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>302 Moved</TITLE></HEAD><BODY>
+<H1>302 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com.ar/webhp">here</A>.
+</BODY></HTML>
+```
+- **TTP/1.1 302 Found**: This is an HTTP status code indicating that the requested resource has been temporarily moved to a new location. In this case, it's a "302 Found" response which typically signifies a redirection.
+    
+- **Location: [http://www.google.com.ar/webhp](http://www.google.com.ar/webhp)**: This header specifies the new location where the requested resource can be found. In this case, it's indicating that the resource has been moved to "[http://www.google.com.ar/webhp](http://www.google.com.ar/webhp)".
+    
+- **Cache-Control: private**: This header indicates that the response is intended for a single user and shouldn't be cached by intermediate proxies or caches.
+    
+- **Content-Type: text/html; charset=UTF-8**: This header specifies the type of content being returned in the response. In this case, it's HTML content with the character encoding set to UTF-8.
+    
+- **Content-Security-Policy**: This header provides security policies for controlling which resources can be loaded on the page. It restricts the sources of objects, scripts, and other resources that can be used.
+    
+- **Date**: The date and time the response was generated.
+    
+- **Server**: The name of the web server that generated the response. In this case, it's "gws," which stands for Google Web Server.
+    
+- **X-XSS-Protection**: This header indicates whether the browser's built-in XSS protection should be enabled. "0" means it's disabled.
+    
+- **X-Frame-Options: SAMEORIGIN**: This header prevents the page from being displayed in a frame or iframe on a different domain.
+    
+- **Set-Cookie**: These headers indicate that cookies are being set. Cookies are used to store data on the user's browser.
+    
+- **HTML**: The HTML content of the response body. It's a simple HTML page that informs the user that the document has moved and provides a link to the new location.
+
+
+## 21
