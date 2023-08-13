@@ -393,3 +393,11 @@ r --> [*]
 p --> [*]
 
 ```
+
+
+```dataview
+table hola as "wtf"
+from #ParcialEco
+order by asc
+```
+
