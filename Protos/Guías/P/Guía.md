@@ -229,3 +229,23 @@ The document has moved
 
 
 ## 21
+**cURL** a diferencia de **wget** tiene mayor abarcabilidad en cuanto a la interaccion con el servidor. Por ejemplo `curl` puede usar GET y POST. `wget` se usa para descargar cosas de internet sin tanta complejidad.
+
+CURL + 
+- `-0` indica que se usa HTTP 1.0
+- `--http1.1` indica que se use 1.1
+- `--http2` indica que se use 2
+- `--compressed` indica a curl que descomprima si esta comprimido
+- `-d` los datos del body de un POST
+- `-H` header
+- `-i`Muestra tanto los encabezados de respuesta como el contenido en la salida.
+- `-s` solo muestra la salida si hubo un erro, (silecionso)
+- `--socks5` Permite especificar un servidor proxy SOCKS5 para enrutar las solicitudes a través de él.
+
+
+## 22
+
+![[Pasted image 20230813185005.png]]
+
+![[Pasted image 20230813185101.png]]
+
