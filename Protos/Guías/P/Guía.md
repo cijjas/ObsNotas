@@ -430,4 +430,6 @@ curl -I --header "If-None-Match: \"12345\"" http://foo.leak.com.ar/
 ¿Qué interpretará un UA que tiene soporte de caching si recibe en una respuesta el header
 Cache-Control: max-age=3600, must-revalidate
 
-Lo que interpreta un UA es que si el recurso tiene mayor a 3600 (unidad de tiempo) entonces tiene que mantenerse en el cache sino, se saca del cache y se lo vuelve a buscar al servidor. el must-revalidate es para cada solucitud, así revalida en cada una.
+Lo que interpreta un UA es que si el recurso tiene mayor a 3600 (unidad de tiempo) entonces tiene que mantenerse en el cache sino, se saca del cache y se lo vuelve a buscar al servidor. el must-revalidate para checkear si hubo un update, se le hace un pequeño request al servidor y si responde 304 Not Modified entonces devuelve el  guardado en cache. Caso contrario va a buscar al servidor nuevamente la respuesta actualizada y se la guarda en cache.
+
+## 34
