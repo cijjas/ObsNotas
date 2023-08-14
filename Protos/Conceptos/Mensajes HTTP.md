@@ -9,7 +9,7 @@
 	- Las paginas pueden estar cargadas en un mismo IP por decir.
 - **POST**: Envía información al servidor para ser procesada
 	- ![[Pasted image 20230811175404.png]]
-- Tiene un body con información en al enviar al servidor.
+	- Tiene un body con información en al enviar al servidor.
 - **HEAD**: Solicita solo los headers del recurso.
 - Menos usados
 	- **DELETE**: Elimina un recurso del servidor.
@@ -42,8 +42,10 @@
 
 
 # Mensajes MIME
+> Los media types proporcionan una forma estandarizada de comunicar el tipo de contenido entre diferentes sistemas y aplicaciones, lo que facilita la correcta interpretación y manejo de los datos en el entorno de la web.
+
 - Contenido multimedia
-- Cada objeto es etiquetado por el web server
+- Cada objeto es etiquetado por el web server con su tipo y subtipo
 	- text/html
 	- text/plain
 	- video/mp4

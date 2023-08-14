@@ -171,3 +171,265 @@ Si ahora yo hago
 
 
 ## 20
+```bash
+echo -e "GET / HTTP/1.1\r\n\r\n" | nc www.google.com.ar 80
+```
+### A
+El código de respuesta del servidor es "200 OK", significa que el pedido fue procesado y entendio (el GET). El encabezado requerido que debe estar presente en la respuesta es **Content-Type**, que indica el tipo de contenido que se está devolviendo.
+
+Acá el header de respuesta:![[Pasted image 20230813182429.png]]
+### B
+```bash
+echo -e "GET /search HTTP/1.1\r\nHost: www.google.com.ar\r\n\r\n" | nc www.google.com.ar 80
+```
+```bash
+HTTP/1.1 302 Found
+Location: http://www.google.com.ar/webhp
+Cache-Control: private
+Content-Type: text/html; charset=UTF-8
+Content-Security-Policy: object-src 'none';base-uri 'self';script-src 'nonce-q8nnim2M5ICW-iWWX9kT7Q' 'strict-dynamic' 'report-sample' 'unsafe-eval' 'unsafe-inline' https: http:;report-uri https://csp.withgoogle.com/csp/gws/xsrp
+P3P: CP="This is not a P3P policy! See g.co/p3phelp for more info."
+Date: Sun, 13 Aug 2023 21:25:53 GMT
+Server: gws
+Content-Length: 227
+X-XSS-Protection: 0
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: 1P_JAR=2023-08-13-21; expires=Tue, 12-Sep-2023 21:25:53 GMT; path=/; domain=.google.com.ar; Secure
+Set-Cookie: AEC=Ad49MVETtrsatuYGEWoSUy4UQiSySU3mdv5Fl8iQS8zULGk74fKgAukwArY; expires=Fri, 09-Feb-2024 21:25:53 GMT; path=/; domain=.google.com.ar; Secure; HttpOnly; SameSite=lax
+Set-Cookie: NID=511=kaRO97Zp2m-cuMsP_RN4XnR0i9bXaPegDatXk6JcByVgV5gEc0egD9k31WrWOoQUIywh3fXqNU59EE3I0V7y4DaOjqMRR6U5q66gfGwUL5aEp_rc-6O412AgprurR-FD7gdVapcmnABFtiAlEk7T5p__3QEScuJ6uIVsbn2eec4; expires=Mon, 12-Feb-2024 21:25:53 GMT; path=/; domain=.google.com.ar; HttpOnly
+
+<HTML><HEAD><meta http-equiv="content-type" content="text/html;charset=utf-8">
+<TITLE>302 Moved</TITLE></HEAD><BODY>
+<H1>302 Moved</H1>
+The document has moved
+<A HREF="http://www.google.com.ar/webhp">here</A>.
+</BODY></HTML>
+```
+- **TTP/1.1 302 Found**: This is an HTTP status code indicating that the requested resource has been temporarily moved to a new location. In this case, it's a "302 Found" response which typically signifies a redirection.
+    
+- **Location: [http://www.google.com.ar/webhp](http://www.google.com.ar/webhp)**: This header specifies the new location where the requested resource can be found. In this case, it's indicating that the resource has been moved to "[http://www.google.com.ar/webhp](http://www.google.com.ar/webhp)".
+    
+- **Cache-Control: private**: This header indicates that the response is intended for a single user and shouldn't be cached by intermediate proxies or caches.
+    
+- **Content-Type: text/html; charset=UTF-8**: This header specifies the type of content being returned in the response. In this case, it's HTML content with the character encoding set to UTF-8.
+    
+- **Content-Security-Policy**: This header provides security policies for controlling which resources can be loaded on the page. It restricts the sources of objects, scripts, and other resources that can be used.
+    
+- **Date**: The date and time the response was generated.
+    
+- **Server**: The name of the web server that generated the response. In this case, it's "gws," which stands for Google Web Server.
+    
+- **X-XSS-Protection**: This header indicates whether the browser's built-in XSS protection should be enabled. "0" means it's disabled.
+    
+- **X-Frame-Options: SAMEORIGIN**: This header prevents the page from being displayed in a frame or iframe on a different domain.
+    
+- **Set-Cookie**: These headers indicate that cookies are being set. Cookies are used to store data on the user's browser.
+    
+- **HTML**: The HTML content of the response body. It's a simple HTML page that informs the user that the document has moved and provides a link to the new location.
+
+
+## 21
+**cURL** a diferencia de **wget** tiene mayor abarcabilidad en cuanto a la interaccion con el servidor. Por ejemplo `curl` puede usar GET y POST. `wget` se usa para descargar cosas de internet sin tanta complejidad.
+
+CURL + 
+- `-0` indica que se usa HTTP 1.0
+- `--http1.1` indica que se use 1.1
+- `--http2` indica que se use 2
+- `--compressed` indica a curl que descomprima si esta comprimido
+- `-d` los datos del body de un POST
+- `-H` header
+- `-i`Muestra tanto los encabezados de respuesta como el contenido en la salida.
+- `-s` solo muestra la salida si hubo un erro, (silecionso)
+- `--socks5` Permite especificar un servidor proxy SOCKS5 para enrutar las solicitudes a través de él.
+
+
+## 22
+![[Pasted image 20230813185005.png]]
+
+![[Pasted image 20230813185101.png]]
+
+Fijarse en la sutil diferencia que en el primer HTTP request se retorna 200 OK y se empieza a descargar, en cambio en el --continue, retorna 206 Partial Content, que indica que la respuesta ya no es el iso entero sino solo la parte que falta.
+
+
+# HTTP: Funcionalidades que provee el protocolo
+
+
+## 23
+El protocolo HTTP especifica que el header en su totalidad es case insensitive. Entonces sí, son equivalentes.
+
+## 24
+1. Chunked significa que la información en el body está fragmentada y por ejemplo. **Permite que el contenido se transmita mientras se genera, en lugar de esperar a que se complete todo el contenido antes de enviarlo**.
+	1. Por ejemplo 
+```makefile
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Transfer-Encoding: chunked
+
+25
+Este es el primer trozo.
+1A
+Este es el segundo trozo.
+0
+```
+
+2. Otras codificaciones
+	1. gzip: contenido comprimito con DEFLATE
+	2. deflate : parecido al anterior
+	3. binario
+	4. brotoli, mejor que gzip en compresion pero mas lento
+	5. identity, la default sin compresión ni codificacion, nada raro.
+
+
+3. Sirven para mandar contenido dependiendo de cuál es la utilidad posible. Que es esta pregunta man. Si vos queres un jueguito re pesado mandarás la data comprimida, si queres descargar cosas sin saber su tamaño vas por chunked y así cada caso es diferente.
+4. Eeeeeee
+5. Cada tipo de codificación tiene un propósito específico y se utiliza en función de las necesidades de transmisión de contenido, eficiencia y compatibilidad con los agentes de usuario.
+
+## 25
+
+### ¿Qué es un media type?
+> Los media types proporcionan una forma estandarizada de comunicar el tipo de contenido entre diferentes sistemas y aplicaciones, lo que facilita la correcta interpretación y manejo de los datos en el entorno de la web.
+
+- Un media type o MIME type es una etiqueta para identificar a un recurso de internet. 
+- Se usa para para entender como debe manejarse el contenido y que los navegadores o servidores sepan como mostrar la información. 
+Cada MIME type tiene 2 partes, el **tipo**(1) y el  **subtipoe**(2). Primero:
+- text
+- image
+- audio
+- video
+- application
+- multipart
+Segundo:
+- text/html
+- text/xml
+- image/jpg
+- image/png
+
+## 26
+
+### A
+Se necesita que tanto el cliente como el servidor tiene que tener los encabezados (headers) correctos
+
+### B
+Ventajas de HTTP vs NO HTTP
+
+- **Reducción de latencia** una conexión http puede mantener abierta una sesión durante un rato para que la apertura y el "handshake" entre cliente y servidor sea uno solo.
+- **Menor sobrecarga de red**: Con conexiones persistentes, se evita la sobrecarga de establecer una conexión nueva para cada solicitud. Esto resulta en un uso más eficiente de los recursos de red y reduce la congestión en la red.
+- **Mejora de rendimiento**: La capacidad de enviar múltiples solicitudes antes de esperar las respuestas individuales (mediante pipelining) permite una mejor utilización de la conexión y reduce el tiempo de inactividad mientras se espera una respuesta. Esto mejora el rendimiento general de las solicitudes y respuestas.
+- **Ahorro de recursos del servidor**: Las conexiones persistentes permiten que el servidor maneje varias solicitudes a través de la misma conexión, lo que reduce la carga en términos de establecimiento y cierre de conexiones. Esto ahorra recursos del servidor y mejora su capacidad para manejar un mayor número de solicitudes.
+- **Eficiencia en navegadores**: Los navegadores modernos aprovechan las conexiones persistentes para cargar recursos como imágenes, hojas de estilo y scripts de manera más eficiente, ya que pueden reutilizar conexiones existentes para cargar elementos de la página.
+
+### Pipelining
+> El pipelining es una técnica que se usa junto con las conexiones persistentes para mejorar aún más la eficiencia en la transferencia de datos. Con el pipelining, un cliente puede enviar múltiples solicitudes al servidor antes de recibir las respuestas correspondientes. Esto permite que las solicitudes se envíen secuencialmente a través de la misma conexión sin esperar las respuestas intermedias, lo que reduce el tiempo total de transferencia.
+
+Sin embargo, es importante tener en cuenta que el pipelining no es ampliamente utilizado debido a ciertas limitaciones y problemas potenciales, como la posibilidad de bloqueo en la transferencia si una solicitud tiene problemas y las respuestas no coinciden en orden. En su lugar, se han desarrollado enfoques más sofisticados como el multiplexado HTTP/2, que resuelven estos problemas y ofrecen un rendimiento mejorado en comparación con el pipelining.
+
+## 27
+El protocolo HTTP porevee:
+- GET
+- POST
+- HEAD
+- DELETE
+- OPTIONS
+- TRACE
+- PUT
+
+Se dice idemoptente a los métodos que al ser ejecutados no cambian el estado en reiteradas peticiones, por ejemplo si hago get de un recurso varias veces, el accionar de get no afecta en ningun sentido la respuesta y siempre se va a obtener la misma respuesta luego de varias peticiones. En cambio POST puede no obtener la misma respuesta siempre pues el POST permite envíar un body que cambia la respuesta del receiver.
+
+En el siguiente caso
+> Se cuenta con una extensión al user-agent (ej: plugin de Firefox) que
+una vez cargada las página web (de formato HTML) el mismo recolecta
+todos los links en el documento, y con el objetivo de acelerar la expe-
+riencia del usuario, comienza a descargar todos los links recolectados.
+De esta forma el usuario cuando siga algún link de interés no tendrá
+que esperar. Suponga que el usuario visita un sitio web que tiene una
+página web que presenta un listado de cosas, y cada ítem, además de
+presentar su nombre, presenta un link para editar su contenido, y otro
+link para eliminar el mismo (es decir el clásico ABM). El desarrollador
+decidió que realizando un GET a los link de eliminación (/items/123/
+delete).
+
+el GET no es idempotente pues está elimiando un recurso
+
+1. Si el usuario tiene acelerador de internet activado, va a empezar a descargar el recurso varias veces porque piensa que es idempotente porque esa es la naturaleza del GET
+2. El que hizo el GET tiene la culpa
+3. Se puede solucionar haciendo un DELETE en vez de un GET.
+
+El método HTTP DELETE se considera idempotente. La idempotencia se refiere a la propiedad de una operación en la que realizar la misma solicitud múltiples veces produce el mismo resultado que hacerlo solo una vez. En el caso del método DELETE, si se realiza una solicitud DELETE varias veces sobre el mismo recurso, el resultado seguirá siendo el mismo: el recurso será eliminado.
+
+## 28
+Me tira (405) Method not Allowed.
+
+## 29
+- Que código de retorno utilizaría desde su aplicación web para las siguientes situaciones?
+
+### 302 Found
+a. El recurso al que se está accediendo ya no se encuentra en la dirección a la que se está intentando acceder. Se conoce cual es la nueva dirección que se debe utilizar a partir de este momento.
+302
+
+### 403  Forbidden
+b. El cliente no tiene permiso para acceder a la página (ejemplo un usuario anónimo encontró cual es la URL del backoffice de administración)
+
+### 405 Not allowed
+b.b Cuando se usa un metodo no soportado
+
+### 401 Unauthorized
+c. El cliente no se encuentra autenticado
+El cliente está enviando un DELETE al recurso pero esa operación no es soportada (solo soporta el GET).
+### 409 Conflict
+d. El recurso que se está editando (por ejemplo una entrada de un blog) fue editado desde el momento que nosotros lo comenzamos a editar, y apretamos el botón guardar (no queremos perder los cambios recién guardados)
+
+### 410 Gone
+Eliminado premanentemente y no será recuperado
+
+### 404 Not Found
+Se utiliza cuando el servidor no puede encontrar el recurso solicitado en el momento, pero no está seguro si el recurso se eliminará permanentemente o si podría estar disponible en el futuro.
+
+### 400 Bad request
+f. Faltó en la URL de un GET un parámetro (ej /foo/bar?param=123
+g. El formato de un parámetro es incorrecto (ej /foo/bar?param=abc donde param debía ser un número entero).
+
+### 415 Unsuported Media Type
+Se está intentando subir un recurso cuyo formato no es soportado en el servidor
+
+### 503 Service Unavailable
+El recurso al que se está intentando acceder requiere de otro sistema externo que no se encuentra por el momento disponible (ej: está caído)
+
+
+## 30
+
+```HTTP
+GET / HTTP/1.1
+Authorization: Basic YWxndW51c3VhcmlvOmFsZ3VuYXBhc3N3b3Jk
+```
+
+Este request indica que hay una autenticación. Cuando la autenticación es Basic el contenido esta codificado en base 64, el usuario seguido por la contraseña separados por un ";".
+El código de la autorización una vez "decoded" dice : "algunusuario:algunapassword". Lo hice con un [base 64 decoder online](https://www.base64decode.org/).
+
+## 31
+HTTP ofrece:
+- keep-alive
+- cache
+- comprecion
+- pipeline
+- Chunked
+- otros...
+Para minimizar el tráfico de red y la utilización de los recursos.
+
+# HTTP: Entity tags, y caching
+## 32 
+Haga un GET condicional utilizando la fecha de última modificación
+```bash
+curl -I --header "If-Modified-Since: Tue, 01 Jan 2023 00:00:00 GMT" http://foo.leak.com.ar/
+```
+Haga un GET condicional utilizando los “entity tags”
+```bash
+curl -I --header "If-None-Match: \"12345\"" http://foo.leak.com.ar/
+```
+
+## 33
+¿Qué interpretará un UA que tiene soporte de caching si recibe en una respuesta el header
+Cache-Control: max-age=3600, must-revalidate
+
+Lo que interpreta un UA es que si el recurso tiene mayor a 3600 (unidad de tiempo) entonces tiene que mantenerse en el cache sino, se saca del cache y se lo vuelve a buscar al servidor. el must-revalidate para checkear si hubo un update, se le hace un pequeño request al servidor y si responde 304 Not Modified entonces devuelve el  guardado en cache. Caso contrario va a buscar al servidor nuevamente la respuesta actualizada y se la guarda en cache.
+
+## 34
