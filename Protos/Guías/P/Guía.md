@@ -355,3 +355,8 @@ el GET no es idempotente pues está elimiando un recurso
 3. Se puede solucionar haciendo un DELETE en vez de un GET.
 
 El método HTTP DELETE se considera idempotente. La idempotencia se refiere a la propiedad de una operación en la que realizar la misma solicitud múltiples veces produce el mismo resultado que hacerlo solo una vez. En el caso del método DELETE, si se realiza una solicitud DELETE varias veces sobre el mismo recurso, el resultado seguirá siendo el mismo: el recurso será eliminado.
+
+## 28
+Me tira (405) Method not Allowed.
+
+## 29
