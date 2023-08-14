@@ -42,8 +42,10 @@
 
 
 # Mensajes MIME
+> Los media types proporcionan una forma estandarizada de comunicar el tipo de contenido entre diferentes sistemas y aplicaciones, lo que facilita la correcta interpretación y manejo de los datos en el entorno de la web.
+
 - Contenido multimedia
-- Cada objeto es etiquetado por el web server
+- Cada objeto es etiquetado por el web server con su tipo y subtipo
 	- text/html
 	- text/plain
 	- video/mp4

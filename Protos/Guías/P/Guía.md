@@ -286,4 +286,25 @@ Este es el segundo trozo.
 
 ## 25
 
+### ¿Qué es un media type?
+> Los media types proporcionan una forma estandarizada de comunicar el tipo de contenido entre diferentes sistemas y aplicaciones, lo que facilita la correcta interpretación y manejo de los datos en el entorno de la web.
 
+- Un media type o MIME type es una etiqueta para identificar a un recurso de internet. 
+- Se usa para para entender como debe manejarse el contenido y que los navegadores o servidores sepan como mostrar la información. 
+Cada MIME type tiene 2 partes, el **tipo**(1) y el  **subtipoe**(2). Primero:
+- text
+- image
+- audio
+- video
+- application
+- multipart
+Segundo:
+- text/html
+- text/xml
+- image/jpg
+- image/png
+
+## 26
+
+### A
+Se necesita que tanto el cliente como el servidor tiene que tener los encabezados (headers) correctos.
