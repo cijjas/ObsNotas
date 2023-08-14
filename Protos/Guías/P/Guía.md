@@ -360,3 +360,51 @@ El método HTTP DELETE se considera idempotente. La idempotencia se refiere a la
 Me tira (405) Method not Allowed.
 
 ## 29
+- Que código de retorno utilizaría desde su aplicación web para las siguientes situaciones?
+
+### 302 Found
+a. El recurso al que se está accediendo ya no se encuentra en la dirección a la que se está intentando acceder. Se conoce cual es la nueva dirección que se debe utilizar a partir de este momento.
+302
+
+### 403  Forbidden
+b. El cliente no tiene permiso para acceder a la página (ejemplo un usuario anónimo encontró cual es la URL del backoffice de administración)
+
+### 405 Not allowed
+b.b Cuando se usa un metodo no soportado
+
+### 401 Unauthorized
+c. El cliente no se encuentra autenticado
+El cliente está enviando un DELETE al recurso pero esa operación no es soportada (solo soporta el GET).
+### 409 Conflict
+d. El recurso que se está editando (por ejemplo una entrada de un blog) fue editado desde el momento que nosotros lo comenzamos a editar, y apretamos el botón guardar (no queremos perder los cambios recién guardados)
+
+### 410 Gone
+Eliminado premanentemente y no será recuperado
+
+### 404 Not Found
+Se utiliza cuando el servidor no puede encontrar el recurso solicitado en el momento, pero no está seguro si el recurso se eliminará permanentemente o si podría estar disponible en el futuro.
+
+### 400 Bad request
+f. Faltó en la URL de un GET un parámetro (ej /foo/bar?param=123
+g. El formato de un parámetro es incorrecto (ej /foo/bar?param=abc donde param debía ser un número entero).
+
+### 415 Unsuported Media Type
+Se está intentando subir un recurso cuyo formato no es soportado en el servidor
+
+### 503 Service Unavailable
+El recurso al que se está intentando acceder requiere de otro sistema externo que no se encuentra por el momento disponible (ej: está caído)
+
+
+## 30
+
+```HTTP
+GET / HTTP/1.1
+Authorization: Basic YWxndW51c3VhcmlvOmFsZ3VuYXBhc3N3b3Jk
+```
+
+Este request indica que hay una autenticación. Cuando la autenticación es Basic el contenido esta codificado en base 64, el usuario seguido por la contraseña separados por un ";".
+El código de la autorización una vez "decoded" dice : "algunusuario:algunapassword". Lo hice con un [base 64 decoder online](https://www.base64decode.org/).
+
+## 31
+HTTP ofrece:
+- keep aliva
