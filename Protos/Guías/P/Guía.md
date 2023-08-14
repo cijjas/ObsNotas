@@ -322,3 +322,36 @@ Ventajas de HTTP vs NO HTTP
 > El pipelining es una técnica que se usa junto con las conexiones persistentes para mejorar aún más la eficiencia en la transferencia de datos. Con el pipelining, un cliente puede enviar múltiples solicitudes al servidor antes de recibir las respuestas correspondientes. Esto permite que las solicitudes se envíen secuencialmente a través de la misma conexión sin esperar las respuestas intermedias, lo que reduce el tiempo total de transferencia.
 
 Sin embargo, es importante tener en cuenta que el pipelining no es ampliamente utilizado debido a ciertas limitaciones y problemas potenciales, como la posibilidad de bloqueo en la transferencia si una solicitud tiene problemas y las respuestas no coinciden en orden. En su lugar, se han desarrollado enfoques más sofisticados como el multiplexado HTTP/2, que resuelven estos problemas y ofrecen un rendimiento mejorado en comparación con el pipelining.
+
+## 27
+El protocolo HTTP porevee:
+- GET
+- POST
+- HEAD
+- DELETE
+- OPTIONS
+- TRACE
+- PUT
+
+Se dice idemoptente a los métodos que al ser ejecutados no cambian el estado en reiteradas peticiones, por ejemplo si hago get de un recurso varias veces, el accionar de get no afecta en ningun sentido la respuesta y siempre se va a obtener la misma respuesta luego de varias peticiones. En cambio POST puede no obtener la misma respuesta siempre pues el POST permite envíar un body que cambia la respuesta del receiver.
+
+En el siguiente caso
+> Se cuenta con una extensión al user-agent (ej: plugin de Firefox) que
+una vez cargada las página web (de formato HTML) el mismo recolecta
+todos los links en el documento, y con el objetivo de acelerar la expe-
+riencia del usuario, comienza a descargar todos los links recolectados.
+De esta forma el usuario cuando siga algún link de interés no tendrá
+que esperar. Suponga que el usuario visita un sitio web que tiene una
+página web que presenta un listado de cosas, y cada ítem, además de
+presentar su nombre, presenta un link para editar su contenido, y otro
+link para eliminar el mismo (es decir el clásico ABM). El desarrollador
+decidió que realizando un GET a los link de eliminación (/items/123/
+delete).
+
+el GET no es idempotente pues está elimiando un recurso
+
+1. Si el usuario tiene acelerador de internet activado, va a empezar a descargar el recurso varias veces porque piensa que es idempotente porque esa es la naturaleza del GET
+2. El que hizo el GET tiene la culpa
+3. Se puede solucionar haciendo un DELETE en vez de un GET.
+
+El método HTTP DELETE se considera idempotente. La idempotencia se refiere a la propiedad de una operación en la que realizar la misma solicitud múltiples veces produce el mismo resultado que hacerlo solo una vez. En el caso del método DELETE, si se realiza una solicitud DELETE varias veces sobre el mismo recurso, el resultado seguirá siendo el mismo: el recurso será eliminado.

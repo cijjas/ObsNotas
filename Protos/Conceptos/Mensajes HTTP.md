@@ -9,7 +9,7 @@
 	- Las paginas pueden estar cargadas en un mismo IP por decir.
 - **POST**: Envía información al servidor para ser procesada
 	- ![[Pasted image 20230811175404.png]]
-- Tiene un body con información en al enviar al servidor.
+	- Tiene un body con información en al enviar al servidor.
 - **HEAD**: Solicita solo los headers del recurso.
 - Menos usados
 	- **DELETE**: Elimina un recurso del servidor.
