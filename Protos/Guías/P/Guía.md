@@ -307,4 +307,18 @@ Segundo:
 ## 26
 
 ### A
-Se necesita que tanto el cliente como el servidor tiene que tener los encabezados (headers) correctos.
+Se necesita que tanto el cliente como el servidor tiene que tener los encabezados (headers) correctos
+
+### B
+Ventajas de HTTP vs NO HTTP
+
+- **Reducción de latencia** una conexión http puede mantener abierta una sesión durante un rato para que la apertura y el "handshake" entre cliente y servidor sea uno solo.
+- **Menor sobrecarga de red**: Con conexiones persistentes, se evita la sobrecarga de establecer una conexión nueva para cada solicitud. Esto resulta en un uso más eficiente de los recursos de red y reduce la congestión en la red.
+- **Mejora de rendimiento**: La capacidad de enviar múltiples solicitudes antes de esperar las respuestas individuales (mediante pipelining) permite una mejor utilización de la conexión y reduce el tiempo de inactividad mientras se espera una respuesta. Esto mejora el rendimiento general de las solicitudes y respuestas.
+- **Ahorro de recursos del servidor**: Las conexiones persistentes permiten que el servidor maneje varias solicitudes a través de la misma conexión, lo que reduce la carga en términos de establecimiento y cierre de conexiones. Esto ahorra recursos del servidor y mejora su capacidad para manejar un mayor número de solicitudes.
+- **Eficiencia en navegadores**: Los navegadores modernos aprovechan las conexiones persistentes para cargar recursos como imágenes, hojas de estilo y scripts de manera más eficiente, ya que pueden reutilizar conexiones existentes para cargar elementos de la página.
+
+### Pipelining
+> El pipelining es una técnica que se usa junto con las conexiones persistentes para mejorar aún más la eficiencia en la transferencia de datos. Con el pipelining, un cliente puede enviar múltiples solicitudes al servidor antes de recibir las respuestas correspondientes. Esto permite que las solicitudes se envíen secuencialmente a través de la misma conexión sin esperar las respuestas intermedias, lo que reduce el tiempo total de transferencia.
+
+Sin embargo, es importante tener en cuenta que el pipelining no es ampliamente utilizado debido a ciertas limitaciones y problemas potenciales, como la posibilidad de bloqueo en la transferencia si una solicitud tiene problemas y las respuestas no coinciden en orden. En su lugar, se han desarrollado enfoques más sofisticados como el multiplexado HTTP/2, que resuelven estos problemas y ofrecen un rendimiento mejorado en comparación con el pipelining.
