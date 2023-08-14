@@ -407,4 +407,27 @@ El código de la autorización una vez "decoded" dice : "algunusuario:algunapass
 
 ## 31
 HTTP ofrece:
-- keep aliva
+- keep-alive
+- cache
+- comprecion
+- pipeline
+- Chunked
+- otros...
+Para minimizar el tráfico de red y la utilización de los recursos.
+
+# HTTP: Entity tags, y caching
+## 32 
+Haga un GET condicional utilizando la fecha de última modificación
+```bash
+curl -I --header "If-Modified-Since: Tue, 01 Jan 2023 00:00:00 GMT" http://foo.leak.com.ar/
+```
+Haga un GET condicional utilizando los “entity tags”
+```bash
+curl -I --header "If-None-Match: \"12345\"" http://foo.leak.com.ar/
+```
+
+## 33
+¿Qué interpretará un UA que tiene soporte de caching si recibe en una respuesta el header
+Cache-Control: max-age=3600, must-revalidate
+
+Lo que interpreta un UA es que si el recurso tiene mayor a 3600 (unidad de tiempo) entonces tiene que mantenerse en el cache sino, se saca del cache y se lo vuelve a buscar al servidor. el must-revalidate es para cada solucitud, así revalida en cada una.
