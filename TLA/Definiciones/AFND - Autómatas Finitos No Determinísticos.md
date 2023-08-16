@@ -11,9 +11,9 @@ Esto sigifica la intersección del conjunto de estados finales con las unión de
 #### Ejemplo
 | $\delta$  | 0| 1|
 | -- | -- | -- |
-|q0|{q0q1} | q0
-|q1| - | q2 |
-|q2 | -| - |
+|$q0$|${q0,q1}$ | $q0$
+|$q1$| - | $q2$ |
+|$*q2$ | -| - |
 $P(q) = \{\varnothing, \{q_0\}, \{q_1\}, \{q_2\}, \{q_0, q1\}, \ldots \{q_0, q_1, q_2\}\}$
 
 $$
