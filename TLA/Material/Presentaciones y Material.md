@@ -10,3 +10,7 @@
 ![[2. Autómatas Finitos.pdf]]
 
 
+
+# 3. Autómatas Finitos
+
+![[Clase 3.pdf]]

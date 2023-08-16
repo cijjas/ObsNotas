@@ -24,7 +24,7 @@ $$L= \{\omega \in \{0, 1\}^{*}: |\omega|_0 \equiv 0(2) \land |\omega|_1 \equiv 0
 # 2
 
 ## A
-Ver [[Autómatas Finitos Deterministicos#Minimización de un AFD]].
+Ver [[AFD - Autómatas Finitos Deterministicos#Minimización de un AFD]].
 
 ```mermaid
 flowchart LR;
@@ -393,11 +393,76 @@ r --> [*]
 p --> [*]
 
 ```
+Luego minimizando $A_2$
+
+$$
+\{\{p, q\}, \{r, s, t\}\}
+$$
+$$
+\begin{cases}
+	\delta(p, a) = s \in C_2 & \delta(p, b) = q \in C_1 & \delta(p, c) = p \in C_1\\
+	\delta(q, a) = t \in C_2 & \delta(q, b) = p \in C_1 & \delta(q, c) = q \in C_1\\
+\end{cases}
+$$
+$$
+\begin{cases}
+	\delta(r, a) = q \in C_1 & \delta(r, b) = t \in C_2 & \delta(r, c) = s \in C_2\\
+	\delta(s, a) = s \in C_2 & \delta(s, b) = t \in C_2 & \delta(s, c) = s \in C_2\\
+	\delta(t, a) = t \in C_2 & \delta(t, b) = s \in C_2 & \delta(t, c) = s \in C_2\\
+	
+\end{cases}
+$$
+Separo $\{\{p, q\},  \{s, t\},\{r\}\}$
+
+$$
+\begin{cases}
+	\delta(r, a) = q \in C_1 & \delta(r, b) = t \in C_2 & \delta(r, c) = s \in C_2\\
+\end{cases}
+$$
 
 
-```dataview
-table hola as "wtf"
-from #ParcialEco
-order by asc
+Luego 
+```mermaid
+stateDiagram
+direction LR
+[*] --> p
+p --> q : a
+p --> p : b, c
+q --> q : a, b, c
+r --> p : a
+r --> q : b, c
+r --> [*]
+q --> [*]
 ```
+Si miramos con atención vemos que no son el mismo diagrama de estados.
+
+
+#ParcialTLA
+El estado $\varnothing$ existe en los estados no terminales (es el estado al que van las cosas si está vacío el slot en la tabla)
+# 6
+$$L = \{a^{n}:n\geq 0\} \cup \{b^{n}a:n\geq 1\}$$
+Este lenguaje genera por ejemplo las palabras:
+- ba
+- aba
+- aabba
+- aaba
+- aaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbba
+
+```mermaid
+stateDiagram
+direction LR
+[*] --> p
+p --> q : a
+p --> r : b
+r --> s : a
+r --> r : b
+s --> [*]
+q --> q : a
+q --> t : b
+t --> t : b
+t --> u : a
+u --> [*]
+```
+
+
 

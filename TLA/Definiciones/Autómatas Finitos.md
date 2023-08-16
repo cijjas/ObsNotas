@@ -33,4 +33,7 @@ $L = \{001, 01\}$ cualquier otra formación pertenece al [[Autómatas Finitos#Es
 
 # Tipos de estados
 ![[Pasted image 20230810091449.png]]
-- AFD : [[Autómatas Finitos Deterministicos]]
+
+# Tipos de autómatas
+- [[AFD - Autómatas Finitos Deterministicos]]
+- [[AFND - Autómatas Finitos No Determinísticos]]
