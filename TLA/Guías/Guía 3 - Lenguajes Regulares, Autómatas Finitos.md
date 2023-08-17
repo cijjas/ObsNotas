@@ -585,10 +585,36 @@ CE --> [*]
 
 $$
 \begin{cases}
-clausura(q_0) = \{q_0, q_2, q_3\}\\
-clausura(q_1) = \{q_1\}\\
-clausura(q_2) = \{q_2, q_3\}\\
-clausura(q_3) = \{ q_3\}\\
+clausura(q_0) = \{q_0\} \cup \{ q_2, q_3\}\\
+clausura(q_1) = \{q_1\} \cup \varnothing\\
+clausura(q_2) = \{q_2 \} \cup \{q_3\}\\
+clausura(q_3) = \{ q_3\}\cup \varnothing\\
+\end{cases}
+$$
 
+2. Tabla con $\lambda$
+
+| $\delta$ |  $\lambda$|  $0$ | $1$ |
+| -- | -- | -- | -- | 
+| $q_0$ | $\{q_2\}$| $\varnothing$ | $\{q_1, q_2\}$ |
+| $q_1$ | $\varnothing$| $\{q_0\}$ | $\{q_1, q_0\}$ |
+| $q_2$ | $\{q_3\}$ | $\{q_2\}$ | $\varnothing$ |
+| $q_3$ | $\varnothing$ | $\varnothing$ | $\varnothing$ |
+
+3. Transoformo a AFD
+
+| $\delta$  | $0$ |  $1$ |
+| --  |  -- |  -- |
+| $\rightarrow \{q_0\}\cup \{q_2, q_3\} :A$ | $\{q_2\}\cup \{q_3\} :B$ | $\{q_1, q_2\} \cup \{q_3\} :C$ |
+| $\{q_2\}\cup \{q_3\} :B$ | $\{q_2\}\cup\{q_3\}: B$|  $\varnothing$|
+| $\{q_1, q_2\} \cup \{q_3\} :C$ | $\{q_0, q_2\} \cup \{q_3\}: D$| $\{q_1, q_0\} \cup \{q_2, q_3\}:E$|
+| $\{q_0, q_2\} \cup \{q_3\}: D$ | $\{q_2\} \cup \{q_3\} : B$| $\{q_1, q_2\} \cup \{q_3\} : C$|
+| $\{q_1, q_0\} \cup \{q_2, q_3\}:E$ | $\{q_0, q_2\} \cup \{q_3\} :D$| $\{q_0, q_1, q_2\} \cup \{q_3\} : F$|
+|$\{q_0, q_1, q_2\} \cup \{q_3\} : F$|$\{q_0, q_2\} \cup \{q_3\} :D$ | $\{q_0, q_1, q_2\} \cup \{q_3\} : F$ |
+
+4. Minimo
+
+$$
+\begin{cases}
 \end{cases}
 $$
