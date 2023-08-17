@@ -468,6 +468,46 @@ Este autómata es $A = <\{a, b\}, \{p, q, r,s, t, u\}, \delta, p, \{s, u\}>$
 # 7
 
 ## a
+#### Primera forma práctica
+Para arrancar, calculo las clausuras de los elementos
+$$
+\begin{cases}
+clausura(q_0) = \{q_0\}\\
+clausura(q_1) = \{q_1, q_2\}\\
+clausura(q_2) = \{q_2\}
+\end{cases}
+$$
+Hago la tabla con $\lambda$  donde hago todos los posibles alcances a distancia de un único paso sin incluirse a sí mismos. Aquel estado que no tenga una transición completa se le asigna la transición a un estado trampa $T$. En las transiciones de lambda no pongo $T$ pues no existe esa transición.
+
+| $\delta$ | $\lambda$  | $0$ | $1$|
+| -- | --  | -- | -- |
+| $\rightarrow q_0$ |   | $\{q_1\}$ | $\{q_1\}$ |
+| $*q_1$ | $\{q_2\}$  | $\{q_0, q_2\}$ | $\{q_1\}$ |
+| $q_2$ |   | $T$ | $\{q_1\}$ |
+| $T$ |   | $T$ | $T$ |
+
+Luego, hago otra tabla sin $\lambda$ en la que anoto todas las transiciones posibles de longitud uno, tomando en cuenta que $\lambda$ no consume. Recordar que si se está parado en un estado, las conexiones $\lambda$ permiten que sea equivalente estar parado en el siguiente estado.
+![[Pasted image 20230817183642.png]]
+Entonces nos queda la tabla
+
+| $\delta$ | $0 = \lambda(\delta(q_i, 0))$| $1 = \lambda(\delta(q_i, 1))$ |
+| -- | --- | --|
+| $q_0$ | $q_1, q_2$ | $q_1, q_2$ |
+| $q_1$ | $q_0, q_2$ | $q_1, q_2$ |
+| $q_2$ | $T$ | $q_1, q_2$ |
+| $T$ | $T$ | $T$ |
+
+Luego esta tabla la pasaremos a DFA. Comenzando en la primera celda con $\lambda(q_0)$
+
+
+|$\delta$ | $0$| $1$  |  
+| -- | -- | -- |
+| $q_0 : A$ | $\{q_1, q_2\} \cup \varnothing :B$ | $\{q_1, q_2\} \cup \varnothing : B$| 
+|$\{q_1, q_2\}\cup \varnothing :B$ | $\{q_0, q_2\}: C$ | $\{q_1, q_2\} :B$|
+|$\{q_0, q_2\} : C$ | $\{q_1, q_2\} :B$| $\{q_1, q_2\}:B$ |
+
+
+#### Segunda forma medio fea (youtube)
 Para arrancar, calculo las clausuras de los elementos
 
 $$
@@ -501,13 +541,13 @@ Luego este no es minimal por ende separo nuvamente
 
 $$
 A =\begin{cases}
-\delta(A, 0) \in B & \delta(A, 1) \in B\\
-\delta(C, 0) \in B & \delta(C, 1) \in B\\
+\delta(A, 0) \in C_2 & \delta(A, 1) \in C_2\\
+\delta(C, 0) \in C_2 & \delta(C, 1) \in C_2\\
 \end{cases}
 $$
 $$
 B = \begin{cases}
-\delta(B, 0) \in A & \delta(B, 1) \in B\\
+\delta(B, 0) \in C_1 & \delta(B, 1) \in C_2\\
 \end{cases}
 $$
 
@@ -520,7 +560,6 @@ A --> B : 0, 1
 B --> B : 1
 B --> A : 0
 B --> [*]
-
 ```
 
 
@@ -532,9 +571,9 @@ La tabla pura del dibujo es:
 | -- | -- | -- |
 | $\rightarrow q_0$| $\{q_0, q_1\}$|$\{q_1\}$ | 
 | $*q_1$| $\{q_2\}$|$\{q_2\}$ | 
-| $q_2$| $\varnothing$|$\{q_2\}$ | 
+| $q_2$| $T$|$\{q_2\}$ | 
 
-Hago las transisiones del AFD
+Hago las transiciones del AFD
 
 | $\delta$ |  $0$ |  $1$ |
 | -- | -- | -- |
@@ -542,39 +581,50 @@ Hago las transisiones del AFD
 | $*\{q_0, q_1\}: B$| $\{q_0, q_1, q_2\} :D$|$\{q_1, q_2\}:E$ | 
 | $*\{q_0, q_1, q_2\}:D$| $\{q_0, q_1, q_2\}:D$|$\{q_1,q_2\}:E$ | 
 | $*\{q_1, q_2\}:E$| $\{q_2\}:F$|$\{q_2\}:F$ |
-| $\{q_2\}:F$| $\varnothing$|$\{q_2\}:F$ | 
+| $\{q_2\}:F$| $T$|$\{q_2\}:F$ | 
 | $*\{q_1\}:C$| $\{q_2\}:F$|$\{q_2\}:F$ | 
-| $\varnothing$| $\varnothing$|$\varnothing$ | 
+| $T$| $T$|$T$ | 
 
 $$
-\frac{Q}{E_0} = \{\{C,B,D,E\}, \{A,F\}\}
+\frac{Q}{E_0} = \{\{C,B,D,E\}, \{A,F, T\}\}
 $$
 $$
 \begin{cases}
-\delta(C, 0) \in F & \delta (C, 1) \in F\\
-\delta(B, 0) \in D & \delta (B, 1) \in E\\
-\delta(D, 0) \in D & \delta (D, 1) \in E\\
-\delta(E, 0) \in F & \delta (E, 1) \in F\\\\
-\delta(A, 0) \in B & \delta (A, 1) \in C\\
-\delta(F, 0) \in \varnothing & \delta (F, 1) \in F
-
-\end{cases} \Rightarrow \{\{C, E\}, \{B, D\}, \{A\}, \{F\}\}
+\delta(C, 0) = F \in C_2 & \delta (C, 1) = F \in C_2\\
+\delta(B, 0) = D \in C_1 & \delta (B, 1) = E \in C_1\\
+\delta(D, 0) = D \in C_1 & \delta (D, 1) = E \in C_1\\
+\delta(E, 0) = F \in C_2 & \delta (E, 1) = F \in C_2\\\\
+\delta(A, 0) = B \in C_1 & \delta (A, 1) = C \in C_1\\
+\delta(F, 0) = T \in C_2 & \delta (F, 1) = F \in C_2\\
+\delta(T, 0) = T \in C_2 & \delta (T, 1)  = T \in C_2
+\end{cases}~~~ \Rightarrow \{\{B,D\}, \{C,E\}, \{A\},\{F,T\}\}
 $$
+$$
+\Rightarrow 
+\begin{cases}
+\delta(B, 0) = D \in C_1 & \delta (B, 1) = E \in C_2\\
+\delta(D, 0) = D \in C_1 & \delta (D, 1) = E \in C_2\\\\
+\delta(C, 0) = F \in C_4 & \delta (C, 1) = F \in C_4\\
+\delta(E, 0) = F \in C_4 & \delta (E, 1) = F \in C_4\\\\
+\delta(A, 0) = B \in C_1 & \delta (A, 1) = C \in C_1\\\\
+\delta(F, 0) = T \in C_4 & \delta (F, 1) = F \in C_4\\
+\delta(T, 0) = T \in C_4 & \delta (T, 1)  = T \in C_4
+\end{cases}
+$$
+
 
 ```mermaid
 stateDiagram
 direction LR
 [*] --> A
-A  --> BD : 0
-A  --> CE : 1
-BD  --> BD : 0
-BD  --> CE : 1
-CE  --> F : 0, 1
-F --> X :0
-F --> F : 1
-x --> X : 0, 1
-BD --> [*]
+A --> BD : 0
+A --> CE : 1
+BD --> BD : 0
+BD --> CE : 1
+CE --> FT : 0, 1
+FT --> FT : 0, 1
 CE --> [*]
+BD --> [*]
 ```
 
 
@@ -596,25 +646,64 @@ $$
 
 | $\delta$ |  $\lambda$|  $0$ | $1$ |
 | -- | -- | -- | -- | 
-| $q_0$ | $\{q_2\}$| $\varnothing$ | $\{q_1, q_2\}$ |
-| $q_1$ | $\varnothing$| $\{q_0\}$ | $\{q_1, q_0\}$ |
-| $q_2$ | $\{q_3\}$ | $\{q_2\}$ | $\varnothing$ |
-| $q_3$ | $\varnothing$ | $\varnothing$ | $\varnothing$ |
+| $q_0$ | $\{q_2, q_3\}$| $T$ | $\{q_1, q_2\}$ |
+| $q_1$ | | $\{q_0\}$ | $\{q_0, q_1\}$ |
+| $q_2$ | $\{q_3\}$ | $\{q_2\}$ | $T$ |
+| $q_3$ |  | $T$ | $T$ |
 
-3. Transoformo a AFD
+3. Tabla sin $\lambda$
 
 | $\delta$  | $0$ |  $1$ |
 | --  |  -- |  -- |
 | $\rightarrow \{q_0\}\cup \{q_2, q_3\} :A$ | $\{q_2\}\cup \{q_3\} :B$ | $\{q_1, q_2\} \cup \{q_3\} :C$ |
-| $\{q_2\}\cup \{q_3\} :B$ | $\{q_2\}\cup\{q_3\}: B$|  $\varnothing$|
-| $\{q_1, q_2\} \cup \{q_3\} :C$ | $\{q_0, q_2\} \cup \{q_3\}: D$| $\{q_1, q_0\} \cup \{q_2, q_3\}:E$|
+| $\{q_2\}\cup \{q_3\} :B$ | $\{q_2\}\cup\{q_3\}: B$|  $T$|
+| $*\{q_1, q_2\} \cup \{q_3\} :C$ | $\{q_0, q_2\} \cup \{q_3\}: D$| $\{q_0, q_1\} \cup \{q_2, q_3\}:E$|
 | $\{q_0, q_2\} \cup \{q_3\}: D$ | $\{q_2\} \cup \{q_3\} : B$| $\{q_1, q_2\} \cup \{q_3\} : C$|
-| $\{q_1, q_0\} \cup \{q_2, q_3\}:E$ | $\{q_0, q_2\} \cup \{q_3\} :D$| $\{q_0, q_1, q_2\} \cup \{q_3\} : F$|
-|$\{q_0, q_1, q_2\} \cup \{q_3\} : F$|$\{q_0, q_2\} \cup \{q_3\} :D$ | $\{q_0, q_1, q_2\} \cup \{q_3\} : F$ |
+| $*\{q_0, q_1\} \cup \{q_2, q_3\}:E$ | $\{q_0\} \cup \{q_2, q_3\} :A$| $\{q_0, q_1, q_2\} \cup \{q_3\} : E$|
 
-4. Minimo
+4. Minimización
 
+$$
+\frac{Q}{E_0} = \{\{C,E\}, \{A, B,D, T\}\}
+$$
 $$
 \begin{cases}
+\delta(A, 0) = B \in C_2 && \delta(A, 1) = C \in C_1\\
+\delta(B, 0) = B \in C_2 && \delta(B, 1) = T \in C_2\\
+\delta(T, 0) = T \in C_2 && \delta(E, 1) = T \in C_2\\
+\delta(D, 0) = B \in C_2 && \delta(D, 1) = C \in C_1\\\\
+\delta(C, 0) = D \in C_2 && \delta(C, 1) = E \in C_1\\
+\delta(E, 0) = A \in C_2 && \delta(E, 1) = E \in C_1\\
 \end{cases}
 $$
+
+Divido
+$$
+\frac{Q}{E_0} = \{\{C, E\}, \{B, T\}, \{A, D\}\}
+$$
+$$
+\begin{cases}
+\delta(C, 0) = D \in C_3 && \delta(C, 1) = E \in C_1\\
+\delta(E, 0) = A \in C_3 && \delta(E, 1) = E \in C_1\\\\
+\delta(B, 0) = B \in C_2 && \delta(B, 1) = T \in C_2\\
+\delta(T, 0) = T \in C_2 && \delta(E, 1) = T \in C_2\\\\
+\delta(A, 0) = B \in C_2 && \delta(A, 1) = C \in C_1\\
+\delta(D, 0) = B \in C_2 && \delta(D, 1) = C \in C_1\\\\
+\end{cases}
+$$
+```mermaid
+stateDiagram
+direction LR
+[*] --> AD
+AD --> BT : 0
+AD --> CE : 1
+CE --> AD : 0
+CE --> CE : 1
+BT --> BT : 0, 1
+CE --> [*]
+```
+
+
+
+# 8
+
