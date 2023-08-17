@@ -463,6 +463,132 @@ t --> t : b
 t --> u : a
 u --> [*]
 ```
+Este autómata es $A = <\{a, b\}, \{p, q, r,s, t, u\}, \delta, p, \{s, u\}>$
+
+# 7
+
+## a
+Para arrancar, calculo las clausuras de los elementos
+
+$$
+\begin{cases}
+clausura(q_0) = \{q_0\}\\
+clausura(q_1) = \{q_1, q_2\}\\
+clausura(q_2) = \{q_2\}
+\end{cases}
+$$
+Hago la tabla con $\lambda$
+
+| $\delta$ | $\lambda$  | $0$ | $1$|
+| -- | --  | -- | -- |
+| $\rightarrow q_0$ | $\{q_0\}$  | $\{q_1\}$ | $\{q_1\}$ |
+| $*q_1$ | $\{q_1, q_2\}$  | $\{q_0, q_2\}$ | $\{q_1\}$ |
+| $q_2$ | $\{q_2\}$  | $\varnothing$ | $\{q_1\}$ |
+
+Luego hago la tabla sin $\lambda$
+
+| $\delta$ | $0$ |  $1$ |
+| -- | -- | -- |
+|$\rightarrow \{q_0\} : A$ | $\{q_1\} : B$ | $\{q_1\} :B$|
+|$*\{q_1\} : B$ | $\{q_0, q_2 \} : C$ | $\{q_1\} :B$|
+| $\{q_0, q_2\} : C$ | $\{q_1\} :B$| $\{q_1\} : B$|
+
+Finalmente vemos que sea minimal. Como podemos observar 
+$$
+\frac{Q}{E_0} = \{\{A,C\}, \{B\}\} 
+$$
+Luego este no es minimal por ende separo nuvamente
+
+$$
+A =\begin{cases}
+\delta(A, 0) \in B & \delta(A, 1) \in B\\
+\delta(C, 0) \in B & \delta(C, 1) \in B\\
+\end{cases}
+$$
+$$
+B = \begin{cases}
+\delta(B, 0) \in A & \delta(B, 1) \in B\\
+\end{cases}
+$$
+
+
+```mermaid
+stateDiagram
+direction LR
+[*] --> A
+A --> B : 0, 1
+B --> B : 1
+B --> A : 0
+B --> [*]
+
+```
+
+
+## b
+
+La tabla pura del dibujo es:
+
+| $\delta$ |  $0$ |  $1$ |
+| -- | -- | -- |
+| $\rightarrow q_0$| $\{q_0, q_1\}$|$\{q_1\}$ | 
+| $*q_1$| $\{q_2\}$|$\{q_2\}$ | 
+| $q_2$| $\varnothing$|$\{q_2\}$ | 
+
+Hago las transisiones del AFD
+
+| $\delta$ |  $0$ |  $1$ |
+| -- | -- | -- |
+| $\rightarrow q_0 : A$| $\{q_0, q_1\} : B$|$\{q_1\}:C$ | 
+| $*\{q_0, q_1\}: B$| $\{q_0, q_1, q_2\} :D$|$\{q_1, q_2\}:E$ | 
+| $*\{q_0, q_1, q_2\}:D$| $\{q_0, q_1, q_2\}:D$|$\{q_1,q_2\}:E$ | 
+| $*\{q_1, q_2\}:E$| $\{q_2\}:F$|$\{q_2\}:F$ |
+| $\{q_2\}:F$| $\varnothing$|$\{q_2\}:F$ | 
+| $*\{q_1\}:C$| $\{q_2\}:F$|$\{q_2\}:F$ | 
+| $\varnothing$| $\varnothing$|$\varnothing$ | 
+
+$$
+\frac{Q}{E_0} = \{\{C,B,D,E\}, \{A,F\}\}
+$$
+$$
+\begin{cases}
+\delta(C, 0) \in F & \delta (C, 1) \in F\\
+\delta(B, 0) \in D & \delta (B, 1) \in E\\
+\delta(D, 0) \in D & \delta (D, 1) \in E\\
+\delta(E, 0) \in F & \delta (E, 1) \in F\\\\
+\delta(A, 0) \in B & \delta (A, 1) \in C\\
+\delta(F, 0) \in \varnothing & \delta (F, 1) \in F
+
+\end{cases} \Rightarrow \{\{C, E\}, \{B, D\}, \{A\}, \{F\}\}
+$$
+
+```mermaid
+stateDiagram
+direction LR
+[*] --> A
+A  --> BD : 0
+A  --> CE : 1
+BD  --> BD : 0
+BD  --> CE : 1
+CE  --> F : 0, 1
+F --> X :0
+F --> F : 1
+x --> X : 0, 1
+BD --> [*]
+CE --> [*]
+```
 
 
 
+## c
+
+1. Clausuras
+
+$$
+\begin{cases}
+clausura(q_0) = \{q_0, q_2, q_3\}\\
+clausura(q_1) = \{q_1\}\\
+clausura(q_2) = \{q_2, q_3\}\\
+clausura(q_3) = \{ q_3\}\\
+
+\end{cases}
+$$

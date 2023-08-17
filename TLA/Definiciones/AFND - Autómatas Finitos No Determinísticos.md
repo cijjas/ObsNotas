@@ -46,7 +46,7 @@ Siguiendo [[#Ejemplo]]
 | --  | -- | -- | 
 |$q_0$ |$\{q_0, q_1\}$ | $q_0$ |
 |$\{q_0, q_1\}$ |$\{q_0, q_1\} \cup \varnothing$ |$\{q_0\} \cup \{q_2\}$ |
-|$*\{q_0, q_2\}$ |$\{q_1, q_2\}$ |$\{q_1\}$ |
+|$*\{q_0, q_2\}$ |$\{q_0, q_1\}$ |$\{q_1\}$ |
 
 > Partimos de q_0 y agregamos las transiciones que no pertenecen aun
 > ![[Pasted image 20230816162550.png]]
