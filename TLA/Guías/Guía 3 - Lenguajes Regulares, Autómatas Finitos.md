@@ -707,3 +707,121 @@ CE --> [*]
 
 # 8
 
+Para determinar si son equivalente los transformo a AFD minimos y me fijo si son el mismo.
+$$
+\begin{cases}
+\lambda(q_0) = \{q_0\} \cup \{q_1, q_2\}\\
+\lambda(q_1) = \{q_1\} \cup \{ q_2\}\\
+\lambda(q_2) = \{q_2\} \cup \{ q_1\}\\
+\lambda(q_3) = \{q_3\} \cup \varnothing
+\end{cases}
+$$
+ 
+## 1
+|  $\delta$| $\lambda$  | $a$  | $b$ | 
+| -- | -- | -- | --|
+| $*\rightarrow q_0$ | $q_1, q_2$ | $T$| $T$|
+| $q_1$ | $q_2$ | $q_3$| $T$|
+| $*q_2$ | $q_1$ | $T$| $T$|
+| $q_3$ |  | $q_3$| $q_2$|
+
+|  $\delta$| $\lambda$  | $a$  | $b$ | 
+| -- | -- | -- | --|
+| $*\rightarrow p$ |  | $p,q$| $T$|
+| $q$ |  | $q$| $r$|
+| $*r$ |  | $q$| $T$|
+| $s$ | $r$ | $s$| $r$|
+
+## 2
+|$\delta$  | $a$ | $b$|
+| -- | -- | -- |
+| $*\rightarrow q_0, q_1, q_2 :A$ | $q_3 :B$| $T$ |
+| $q_3 :B$ | $q_3:B$| $q_1, q_2:C$ |
+| $*q_1, q_2 :C$ | $q_3:B$| $T$ |
+
+
+|$\delta$  | $a$ | $b$|
+| -- | -- | -- |
+| $*\rightarrow p :A$ | $p,q :B$| $T$ |
+| $*p,q :B$ | $p, q:B$| $r:C$ |
+| $*r :C$ | $q:D$| $T$ |
+| $q :D$ | $q:D$| $r:C$ |
+
+
+
+$$
+\begin{cases}
+\frac{Q_1}{E_0} = \{\{A, C\}, \{B, T\}\}\\
+\frac{Q_2}{E_0} = \{\{A,B, C\}, \{ D, T\}\}\\
+
+\end{cases}
+$$
+
+$$
+Q_1:\begin{cases}
+\delta(A, a) = B \in C_2 && \delta(A, b) = T \in C_2\\
+\delta(C, a) = B \in C_2 && \delta(C, b) = T \in C_2\\\\
+\delta(B, a) = B \in C_2 && \delta(C, b) = C \in C_1\\
+\delta(T, a) = T \in C_2 && \delta(T, b) = T \in C_2\\
+\end{cases}
+$$
+$$
+Q_2:\begin{cases}
+\delta(A, a) = B \in C_1 && \delta(A, b) = T \in C_2\\
+\delta(B, a) = B \in C_1 && \delta(B, b) = C \in C_1\\
+\delta(C, a) = D \in C_2 && \delta(C, b) = T \in C_2\\\\
+\delta(D, a) = D \in C_2 && \delta(D, b) = C \in C_1\\
+\delta(T, a) = T \in C_2 && \delta(T, b) = T \in C_2\\
+\end{cases}
+$$
+
+Luego $\frac{Q_1}{E_1} =\{\{A, C\}, \{B\}, \{T\}\}$ y $\frac{Q_2}{E_1} = \{\{A\}, \{B\}, \{C\}, \{D\}, \{T\}\}$ 
+
+$$
+Q_1:\begin{cases}
+\delta(A, a) = B \in C_2 && \delta(X, b) = T \in C_3\\
+\delta(C, a) = B \in C_2 && \delta(C, b) = T \in C_3\\\\
+\delta(B, a) = B \in C_2 && \delta(C, b) = C \in C_1\\\\
+\delta(T, a) = T \in C_3 && \delta(T, b) = T \in C_3\\
+\end{cases}
+$$
+$$
+Q_2:\begin{cases}
+\delta(A, a) = B \in C_2 && \delta(A, b) = T \in C_5\\\\
+\delta(B, a) = B \in C_2 && \delta(B, b) = C \in C_3\\\\
+\delta(C, a) = D \in C_4 && \delta(C, b) = T \in C_5\\\\
+\delta(D, a) = D \in C_4 && \delta(D, b) = C \in C_3\\\\
+\delta(T, a) = T \in C_5 && \delta(T, b) = T \in C_5
+\end{cases}
+$$
+## 3
+```mermaid
+stateDiagram
+direction LR
+[*] --> AC 
+AC --> B : a
+AC --> T : b
+B --> B : a
+B --> AC : b
+T --> T :a, b
+AC --> [*]
+```
+
+```mermaid
+stateDiagram
+direction LR
+[*] --> A
+A --> B : a
+A --> T : b
+B --> B : a
+B --> C : b
+C --> D : a
+C --> T : b
+D --> D : a
+D --> C : b
+T --> T : a, b
+A --> [*]
+B --> [*]
+C --> [*]
+
+```
