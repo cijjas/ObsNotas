@@ -943,6 +943,8 @@ F --> T : a, b, c
 DG --> [*]
 ```
 ## b
+Hago uno que no acepta palabra vacía porque tengo ganas.
+
 ```mermaid
 stateDiagram  
 direction LR
@@ -959,7 +961,6 @@ D --> D : a, b
 B' --> [*]
 C' --> [*]
 D' --> [*]
-
 ```
 
 | $\delta$ | $\lambda$ | $a$ | $b$  | $c$ |
@@ -1036,3 +1037,33 @@ Q --> Q : a, b
 *RST --> T : a, b, c
 
 ```
+## c
+```mermaid
+stateDiagram  
+direction LR
+[*] --> A
+A --> [*]
+A --> B : lambda
+A --> C : lambda
+A --> D : lambda
+B --> BX : a
+B --> B : b, c
+C --> CX : b
+C --> C : a, c
+D --> DX : c
+D --> D : a, b
+BX --> B' : a 
+CX --> C' : b
+DX --> D' : c
+BX --> BX : a, b, c
+CX --> CX : a, b, c
+DX --> DX : a, b, c
+B' --> [*]
+C' --> [*]
+D' --> [*]
+```
+
+$\ldots$
+
+
+# 11
