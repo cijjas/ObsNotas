@@ -999,41 +999,40 @@ I- D-E-F-O-P-Q  -  A-B-C-GH-JK-LM-RST
 
 ```mermaid
 stateDiagram
-direction LR
 [*] --> I
-I --> A : a
-I --> B : b
-I --> C : c
+I --> *A : a
+I --> *B : b
+I --> *C : c
 D --> D : a
-D --> LM : b
-D --> JK : c
-E --> LM : a
+D --> *LM : b
+D --> *JK : c
+E --> *LM : a
 E --> E  : b
-E --> GH : c
-F --> JK : a
-F --> GH: b
+E --> *GH : c
+F --> *JK : a
+F --> *GH: b
 F --> F: c
-O --> RST :a
+O --> *RST :a
 O --> O :b, c
-P --> RST :b
+P --> *RST :b
 P --> P : a, c
-Q --> RST :c
+Q --> *RST :c
 Q --> Q : a, b
-A --> D : a
-A --> LM: b
-A --> JK: c
-B --> LM : a
-B --> E : b
-B --> GH :c
-C --> JK : a
-C --> GH : b
-C --> F : c
-GH --> RST:a
-GH --> O : b, c
-JK --> RST: b
-JK --> P: a, c
-LM --> RST : c
-LM --> Q : a, b
-RST --> T : a, b, c
+*A --> D : a
+*A --> *LM: b
+*A --> *JK: c
+*B --> *LM : a
+*B --> E : b
+*B --> *GH :c
+*C --> *JK : a
+*C --> *GH : b
+*C --> F : c
+*GH --> *RST:a
+*GH --> O : b, c
+*JK --> *RST: b
+*JK --> P: a, c
+*LM --> *RST : c
+*LM --> Q : a, b
+*RST --> T : a, b, c
 
 ```
