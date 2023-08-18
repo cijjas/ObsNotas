@@ -825,3 +825,215 @@ B --> [*]
 C --> [*]
 
 ```
+
+
+# 9
+Parecido al anterior, observemos que $A_b$ reconoce la palabra $aba$ pero $A_a$ no. Luego, no son equivalentes.
+
+
+# 10
+## a
+- $L = \{abc, abd, aacd\}$
+```mermaid
+stateDiagram
+direction LR
+[*] --> A
+A --> B : a
+E --> F : c
+F --> G : d
+B --> E : a
+B --> C : b
+C --> D : c
+C --> G : d
+H --> A : lambda
+G --> [*]
+D --> [*]
+```
+
+| $\delta$  | $\lambda$|  $a$ | $b$ | $c$  | $d$ |
+| -- | -- | -- | -- | -- | -- |
+| $\rightarrow A$ |  | B |  |  | |
+| B |  | E | C |  | |
+| C |  |  |  | D | G|
+| $*D$|  |  |  |  | |
+| E |  |  |  | F | |
+| F |  |  |  |  | G |
+| $*G$ |  |  |  |  |
+| H | A |  |  |  |
+|  |  |  |  |  |
+
+| $\lambda$ |  $a$ | $b$ | $c$  | $d$ |
+| -- | -- | -- | -- | -- |
+| $\rightarrow A$ | B | |  |  |
+| B | E | C |  |  |
+| C |  |  | D | G |
+| $*D$|  |  |  |  | |
+| E |  |  | F |  |
+| F |  |  |  | G |
+| $*G$ |  |  |  |  |
+|  |  |  |  |  |
+
+
+Finalmente construimos el AFD mínimo
+$$
+\frac{Q}{E_0} = \{\{D, G\}, \{A, B, C, E, F, T\}\}
+$$
+$$
+\begin{cases}
+\delta(D, a) = T \in C_2 & \delta(D, b) = T \in C_2 & \delta(D, c) = T \in C_2 & \delta(D, d) = T\in C_2 \\
+\delta(G, a) = T \in C_2 & \delta(G, b) = T \in C_2 & \delta(G, c) = T \in C_2 & \delta(G, d) = T\in C_2 \\\\
+\delta(A, a) = B \in C_2 & \delta(A, b) = T \in C_2 & \delta(A, c) = T \in C_2 & \delta(A, d) = T\in C_2 \\
+\delta(B, a) = E \in C_2 & \delta(B, b) = C \in C_2 & \delta(B, c) = T \in C_2 & \delta(B, d) = T\in C_2 \\
+\delta(C, a) = T \in C_2 & \delta(C, b) = T \in C_2 & \delta(C, c) = D & \delta(C, d) = G\\
+\delta(E, a) = T \in C_2 & \delta(E, b) = T \in C_2 & \delta(E, c) = F \in C_2 & \delta(E, d) = T\in C_2 \\
+\delta(F, a) = T \in C_2 & \delta(F, b) = T \in C_2 & \delta(F, c) = T \in C_2 & \delta(F, d) = G\\
+\delta(T, a) = T \in C_2 & \delta(T, b) = T \in C_2 & \delta(T, c) = T \in C_2 & \delta(T, d) = T\in C_2 \\
+\end{cases}
+$$
+$$
+\frac{Q}{E_1} = \{\{D, G\}, \{A, B, D, T\}, \{C\}, \{F\}\}
+$$
+$$
+\begin{cases}
+\delta(D, a) = T \in C_2 & \delta(D, b) = T \in C_2 & \delta(D, c) = T \in C_2 & \delta(D, d) = T\in C_2 \\
+\delta(G, a) = T \in C_2 & \delta(G, b) = T \in C_2 & \delta(G, c) = T \in C_2 & \delta(G, d) = T\in C_2 \\\\
+\delta(A, a) = B \in C_2 & \delta(A, b) = T \in C_2 & \delta(A, c) = T \in C_2 & \delta(A, d) = T\in C_2 \\
+\delta(B, a) = E \in C_2 & \delta(B, b) = C  & \delta(B, c) = T \in C_2 & \delta(B, d) = T\in C_2 \\
+\delta(E, a) = T \in C_2 & \delta(E, b) = T \in C_2 & \delta(E, c) = F & \delta(E, d) = T \in C_2 \\
+\delta(T, a) = T \in C_2 & \delta(T, b) = T \in C_2 & \delta(T, c) = T \in C_2 & \delta(T, d) = T\in C_2 \\\\
+\delta(C, a) = T \in C_2 & \delta(C, b) = T \in C_2 & \delta(C, c) = D & \delta(C, d) = G\\\\
+\delta(F, a) = T \in C_2 & \delta(F, b) = T \in C_2 & \delta(F, c) = T \in C_2 & \delta(F, d) = G
+\end{cases}
+$$
+
+$$
+\frac{Q}{E_2} = \{\{D, G\}, \{A, T\},\{B\},\{E\},\{C\},\{F\}\}
+$$
+$$
+\begin{cases}
+\delta(D, a) = T \in C_2 & \delta(D, b) = T \in C_2 & \delta(D, c) = T \in C_2 & \delta(D, d) = T\in C_2 \\
+\delta(G, a) = T \in C_2 & \delta(G, b) = T \in C_2 & \delta(G, c) = T \in C_2 & \delta(G, d) = T\in C_2 \\\\
+\delta(A, a) = B  & \delta(A, b) = T \in C_2 & \delta(A, c) = T \in C_2 & \delta(A, d) = T\in C_2 \\
+\delta(T, a) = T \in C_2 & \delta(T, b) = T \in C_2 & \delta(T, c) = T \in C_2 & \delta(T, d) = T\in C_2 \\\\
+\delta(B, a) = E \in C_2 & \delta(B, b) = C  & \delta(B, c) = T \in C_2 & \delta(B, d) = T\in C_2 \\\\
+\delta(E, a) = T \in C_2 & \delta(E, b) = T \in C_2 & \delta(E, c) = F & \delta(E, d) = T \in C_2 \\\\
+\delta(C, a) = T \in C_2 & \delta(C, b) = T \in C_2 & \delta(C, c) = D & \delta(C, d) = G\\\\
+\delta(F, a) = T \in C_2 & \delta(F, b) = T \in C_2 & \delta(F, c) = T \in C_2 & \delta(F, d) = G
+\end{cases}
+$$
+$$
+\frac{Q}{E_3} = \{\{D, G\}, \{A\},\{T\},\{B\},\{E\},\{C\},\{F\}\} = \frac{Q}{E_4}
+$$
+```mermaid
+stateDiagram
+direction LR
+[*] --> A
+A --> B :a
+A --> T : b, c, d
+B --> E : a
+B --> C : b
+B --> T : c, d
+C --> DG : c, d
+C --> T : a, b
+DG --> T : a, b, c, d
+E --> F : c
+E --> T : a, b, d
+F --> DG : d
+F --> T : a, b, c
+DG --> [*]
+```
+## b
+```mermaid
+stateDiagram  
+direction LR
+[*] --> A
+A --> B : lambda
+A --> C : lambda
+A --> D : lambda
+B --> B' : a
+B --> B : b, c
+C --> C' : b
+C --> C : a, c
+D --> D' : c
+D --> D : a, b
+B' --> [*]
+C' --> [*]
+D' --> [*]
+
+```
+
+| $\delta$ | $\lambda$ | $a$ | $b$  | $c$ |
+| -- | -- | --- | --- | -- |
+| A | B, C, D | T | T | T |
+| B |   | B' | B | B |
+| C |   | C | C' | C |
+| D |   | D | D | D' |
+| $*B'$ |   | T | T | T |
+| $*C'$ |   | T | T | T |
+| $*D'$ |   | T | T | T |
+
+
+| _ | $\delta$ | $a$ | $b$  | $c$ |
+| -- | --- | --- | --| -- |
+| $\rightarrow I$ | A+BCD  | A - B'CD |B - BC'D |C - BCD' |
+| $*A$ | B'CD  | D - CD | M - C'D |J -CD' |
+| $*B$ | BC'D  |  L - B'D | E - BD | G - BD' |
+| $*C$ | BCD'  | K - B'C | H - BC' | F - BC |
+| D | CD  | D - CD | M - C'D | J - CD' |
+| E | BD  | L - B'D | E - BD | G - BD' |
+| F | BC  | K - B'C | H - BC' | F - BC |
+| $*G$| BD' | R - B'  | O - B | O -  B |
+| $*H$| BC' | R - B'  | O - B | O - B |
+| $*J$| CD'  | P - C  | S -  C' | P - C |
+| $*K$ | B'C  | P - C  | S - C' | P - C |
+| $*L$ | B'D |  Q - D | Q -  D | T - D' |
+| $*M$ | C'D  | Q - D  | Q - D | T - D' |
+| O | B | R - B' | O - B | O - B |
+| P | C | P - C | S - C' | P - C |
+| Q | D | Q - D | Q - D | T - D' |
+| $*R$ | $*B'$ | T | T | T |
+| $*S$ | $*C'$ | T | T | T |
+| $*T$ | $*D'$ | T | T | T |
+
+I- D-E-F-O-P-Q  -  A-B-C-GH-JK-LM-RST
+
+```mermaid
+stateDiagram
+direction LR
+[*] --> I
+I --> A : a
+I --> B : b
+I --> C : c
+D --> D : a
+D --> LM : b
+D --> JK : c
+E --> LM : a
+E --> E  : b
+E --> GH : c
+F --> JK : a
+F --> GH: b
+F --> F: c
+O --> RST :a
+O --> O :b, c
+P --> RST :b
+P --> P : a, c
+Q --> RST :c
+Q --> Q : a, b
+A --> D : a
+A --> LM: b
+A --> JK: c
+B --> LM : a
+B --> E : b
+B --> GH :c
+C --> JK : a
+C --> GH : b
+C --> F : c
+GH --> RST:a
+GH --> O : b, c
+JK --> RST: b
+JK --> P: a, c
+LM --> RST : c
+LM --> Q : a, b
+RST --> T : a, b, c
+
+```
