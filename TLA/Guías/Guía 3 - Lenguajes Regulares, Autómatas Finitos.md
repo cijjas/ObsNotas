@@ -706,6 +706,7 @@ CE --> [*]
 
 
 # 8
+Obviamente no son equivalentes pues $A_b$ aceota la palabra $a$ pero $A_a$ no. De todas formas, procedemos a la demostración en donde los AFD no son equivalentes.
 
 Para determinar si son equivalente los transformo a AFD minimos y me fijo si son el mismo.
 $$
@@ -716,7 +717,6 @@ $$
 \lambda(q_3) = \{q_3\} \cup \varnothing
 \end{cases}
 $$
- 
 ## 1
 |  $\delta$| $\lambda$  | $a$  | $b$ | 
 | -- | -- | -- | --|
