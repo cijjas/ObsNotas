@@ -1067,3 +1067,32 @@ $\ldots$
 
 
 # 11
+
+
+$$
+\begin{cases}
+Q = \{q_0, \ldots q_n\}\\
+\Sigma = \{z_0, \ldots , z_n\}\\
+\delta(q_i, z_i) = T ~~\forall q_i, z_i
+\end{cases}
+~~~\lor~~~
+\begin{cases}
+Q = \{q_0, \ldots q_n, p\}\\
+\Sigma = \{z_0, \ldots , z_n\}\\
+\delta(q_i, z_i) = p ~~~ z_i\in \Sigma, q_i, p\in Q
+\end{cases}
+$$
+
+La cantidad de de palabras en Q generadas a partir de la consumisión de algun z sobre algun q es menor o igual a 1.
+
+sea $Q = \{A, B\}$
+$\Sigma = \{a, b\}$
+
+```mermaid
+stateDiagram 
+direction LR
+[*] --> A
+A --> B : a
+B --> [*]
+```
+
