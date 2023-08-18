@@ -37,3 +37,4 @@ $L = \{001, 01\}$ cualquier otra formación pertenece al [[Autómatas Finitos#Es
 # Tipos de autómatas
 - [[AFD - Autómatas Finitos Deterministicos]]
 - [[AFND - Autómatas Finitos No Determinísticos]]
+- [[AFND L - Autómatas Finitos No Deterministicos con Lambda]]
