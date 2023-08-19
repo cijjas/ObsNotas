@@ -1067,7 +1067,9 @@ $\ldots$
 
 
 # 11
-
+$$
+\forall q\in Q, \forall z \in \Sigma: \#\{p\in Q : \delta(q, z) = p\} \leq 1
+$$
 
 $$
 \begin{cases}
@@ -1083,8 +1085,9 @@ Q = \{q_0, \ldots q_n, p\}\\
 \end{cases}
 $$
 
-La cantidad de de palabras en Q generadas a partir de la consumisión de algun z sobre algun q es menor o igual a 1.
 
+Está diciendo que la transicion de un estado del conjunto $Q$ a otro estado del conjunto $Q$ mediante  la consumición de $z$ es "incompleta".
+## Ejemplo
 sea $Q = \{A, B\}$
 $\Sigma = \{a, b\}$
 
@@ -1096,3 +1099,14 @@ A --> B : a
 B --> [*]
 ```
 
+## AFD
+```mermaid
+stateDiagram
+direction LR
+[*] --> A
+A --> B : a
+A --> T : b
+T --> T : a, b
+B --> [*]
+```
+# 12
