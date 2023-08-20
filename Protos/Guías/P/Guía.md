@@ -433,3 +433,53 @@ Cache-Control: max-age=3600, must-revalidate
 Lo que interpreta un UA es que si el recurso tiene mayor a 3600 (unidad de tiempo) entonces tiene que mantenerse en el cache sino, se saca del cache y se lo vuelve a buscar al servidor. el must-revalidate para checkear si hubo un update, se le hace un pequeño request al servidor y si responde 304 Not Modified entonces devuelve el  guardado en cache. Caso contrario va a buscar al servidor nuevamente la respuesta actualizada y se la guarda en cache.
 
 ## 34
+
+
+## 36
+
+```nginx
+server {
+        listen 80;
+        listen [::]:80;
+
+
+        root /var/www/html/foo;
+
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name foo;
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+        }
+
+}
+```
+
+## 37
+[NGINX - Doc](http://nginx.org/en/docs/beginners_guide.html)
+[NGINX - Directives](http://nginx.org/en/docs/http/ngx_http_proxy_module.html)
+
+
+## 40
+[NGINX- GZIP](http://nginx.org/en/docs/http/ngx_http_gzip_module.html#gzip)
+Agregar la directiva `gzip on;`  a los servers y listo.
+
+a. Obvio que las ventajas están en la particularidad de que es un archivo comprimido entonces pesa menos, las cosas cargan más rápido.
+
+b. La compresión de recursos puede tener un impacto en el rendimiento del servidor, ya que necesita comprimir los archivos antes de enviarlos. Sin embargo, este impacto suele ser insignificante en comparación con los beneficios de la compresión.
+
+c. 
+- Sí, la compresión de recursos puede ahorrar ancho de banda, ya que los archivos se envían en un formato más compacto. Esto es especialmente beneficioso para usuarios con conexiones lentas o limitadas.
+- La mejora en la velocidad de carga de la página debido a la compresión también puede aumentar positivamente la experiencia del usuario, ya que las páginas se cargarán más rápidamente.
+
+d.
+Algunas ventajas de utilizar Tomcat para servir contenido incluyen:
+- **Soporte para aplicaciones Java:** Tomcat es un contenedor web diseñado para ejecutar aplicaciones Java, lo que es útil si estás desarrollando aplicaciones Java o basadas en Java.
+- **Gestión de servlets y JSP:** Tomcat es capaz de manejar servlets y JavaServer Pages (JSP), lo que permite construir aplicaciones web dinámicas y escalables.
+- **Configuración avanzada:** Tomcat ofrece una configuración más específica para aplicaciones Java, lo que puede ser esencial para aplicaciones complejas.
+
+# Clientes DNS
