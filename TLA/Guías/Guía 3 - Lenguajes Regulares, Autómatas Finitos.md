@@ -1,38 +1,3 @@
-Contenido
-- [[#1|1]]
-- [[#2|2]]
-	- [[#2#A|A]]
-	- [[#2#B|B]]
-	- [[#2#C|C]]
-- [[#3|3]]
-	- [[#3#A|A]]
-	- [[#3#B|B]]
-	- [[#3#C|C]]
-	- [[#3#D|D]]
-	- [[#3#E|E]]
-- [[#4|4]]
-- [[#5|5]]
-- [[#6|6]]
-- [[#7|7]]
-	- [[#7#a|a]]
-			- [[#Primera forma práctica|Primera forma práctica]]
-			- [[#Segunda forma medio fea (youtube)|Segunda forma medio fea (youtube)]]
-	- [[#7#b|b]]
-	- [[#7#c|c]]
-- [[#8|8]]
-	- [[#8#1|1]]
-	- [[#8#2|2]]
-	- [[#8#3|3]]
-- [[#9|9]]
-- [[#10|10]]
-	- [[#10#a|a]]
-	- [[#10#b|b]]
-	- [[#10#c|c]]
-- [[#11|11]]
-	- [[#11#Ejemplo|Ejemplo]]
-	- [[#11#AFD|AFD]]
-- [[#12|12]]
-
 
 ![[Tp03 Lenguajes Regulares Automatas.pdf]]
 
@@ -1101,6 +1066,26 @@ D' --> [*]
 
 $\ldots$
 
+| $\delta$         | $\lambda$ | $a$    | $b$    | $c$    |
+| ---------------- | --------- | ------ | ------ | ------ |
+| $*\rightarrow A$ | BCD       | T      | T      | T      |
+| B                |           | BX     | B      | B      |
+| C                |           | C      | CX     | C      |
+| D                |           | D      | D      | DX     |
+| BX               |           | BX, B' | BX     | BX     |
+| CX               |           | CX     | CX, C' | CX     |
+| DX               |           | DX     | DX     | DX, D' |
+| $*B'$               |           | T      | T      | T      |
+| $*C'$               |           | T      | T      | T      | 
+| $*D'$               |           | T      | T      | T      | 
+
+
+| $\delta$            | $a$          | $b$          | $c$         |
+| ------------------- | ------------ | ------------ | ----------- |
+| $A \rightarrow BCD$ | B - BX, C, D | C - B, CX, D | D -B, C, DX |
+| B - BX, C, D        | BX, B', C, D | BX, CX, D    | BX, C, DX   |
+| C - B, CX, D        | BX, CX, D    | B, CX, C', D | B,             |
+
 
 # 11
 $$
@@ -1135,7 +1120,7 @@ A --> B : a
 B --> [*]
 ```
 
-## AFD
+### AFD
 ```mermaid
 stateDiagram
 direction LR
