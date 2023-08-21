@@ -483,3 +483,91 @@ Algunas ventajas de utilizar Tomcat para servir contenido incluyen:
 - **Configuración avanzada:** Tomcat ofrece una configuración más específica para aplicaciones Java, lo que puede ser esencial para aplicaciones complejas.
 
 # Clientes DNS
+
+## 41
+`dig NS example.com`
+
+
+### IP's
+![[Pasted image 20230820130254.png]]
+
+###  Autoridades
+![[Pasted image 20230820155942.png]]
+
+###### ACA
+![[Pasted image 20230820160109.png]]
+- `it.itba.edu.ar.`: Esta es la zona de nombres a la que se refiere la respuesta. Indica que la respuesta está relacionada con la configuración de la zona de nombres `it.itba.edu.ar`.
+- `300`: Este es el valor de TTL (Time-to-Live) en segundos. Indica cuánto tiempo esta información debe mantenerse en caché en los servidores DNS antes de consultar nuevamente el servidor de nombres para obtener información actualizada.
+- `IN`: Indica que estamos hablando de una entrada en el espacio de nombres de Internet (Internet Namespace).
+- `SOA`: Representa el tipo de registro, que es un registro de Start of Authority (SOA). Este tipo de registro contiene información fundamental sobre la zona de nombres.
+- `crystal.it.itba.edu.ar.`: Este es el servidor de nombres primario (primary name server) autoritativo para la zona de nombres `it.itba.edu.ar.`. Es el servidor que tiene la autoridad final sobre la configuración de esta zona.
+- `root.crystal.it.itba.edu.ar.`: Esta es la dirección de correo electrónico del administrador de la zona (administrative email). Indica que el administrador de esta zona es `root@crystal.it.itba.edu.ar`.
+-  `2023061300`: Este es el número de serie del SOA. Indica cuándo se realizó la última actualización en esta zona de nombres. La convención de formato es `AAAAJJJNN`, donde `AAAA` es el año, `JJJ` es el día del año y `NN` es el número de la actualización en ese día.
+    
+- `3600`: Este es el valor de refresh (cada cuánto tiempo se debe actualizar la información) en segundos.
+    
+- `7200`: Este es el valor de retry (cada cuánto tiempo se debe reintentar la conexión en caso de fallar) en segundos.
+    
+- `2419200`: Este es el valor de expire (tiempo máximo que los servidores pueden mantener la información en caché antes de considerarla obsoleta) en segundos.
+    
+- `86400`: Este es el valor de minimum (valor mínimo de TTL que debe aplicarse a otros registros) en segundos.
+
+## 42
+`dig MX example.com`
+
+![[Pasted image 20230820161703.png]]
+![[Pasted image 20230820161722.png]]
+![[Pasted image 20230820161740.png]]
+
+## 43
+Los servidores de nombre que entran en juego son como se pueden ver [[#ACA]]
+
+
+## 44
+`dig +trace NS pampero.it.itba.edu.ar`
+
+## 45
+`whois example.com`
+preguntar por seguridades permitidas en clarin vs apple
+
+
+# DNS y HTTP
+## 46
+En `/etc/nginx/sites-available` creo un archiv gooLeak.
+```nginx
+server {
+        listen 80;
+        listen [::]:80;
+        server_name foo.pdc.lab;
+
+
+        location / {
+                proxy_pass http://foo.leak.com.ar/;
+        }
+
+}
+```
+
+en `/etc/nginx/sites-enabled` tiro un `ln -s /etc/nginx/sites-available fooLeak` para crear el link simbólico.
+
+Voy a `/etc/hosts` y agrego una linea `127.0.0.1  foo.pdc.lab` . Restarteo nginx y puedo testear que funciona haciendo `curl http://foo.pdc.lab` .
+
+## 47
+```nginx
+server {
+        listen 80;
+        listen [::]:80;
+        server_name foo.pdc.lab;
+
+
+        location / {
+                #proxy_pass http://foo.leak.com.ar/;
+                rewrite ^(.*)$ http://foo.leak.com.ar$request_uri;
+        }
+
+}
+```
+
+
+## Configuración de DNS Server
+
