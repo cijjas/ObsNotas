@@ -1,3 +1,28 @@
+Contenido
+- [[#1|1]]
+- [[#2|2]]
+- [[#3|3]]
+- [[#4|4]]
+	- [[#4#$L = L(G_1)$|$L = L(G_1)$]]
+	- [[#4#$L = L(G_2)$|$L = L(G_2)$]]
+- [[#5|5]]
+	- [[#5#$L = L(G_1)$|$L = L(G_1)$]]
+	- [[#5#$L= L(G_2)$|$L= L(G_2)$]]
+- [[#6|6]]
+- [[#7|7]]
+- [[#8|8]]
+- [[#9|9]]
+- [[#10|10]]
+- [[#11|11]]
+	- [[#11#$L_1=\{ab^{n}a, n\in \mathbb{N}\}$|$L_1=\{ab^{n}a, n\in \mathbb{N}\}$]]
+		- [[#$L_1=\{ab^{n}a, n\in \mathbb{N}\}$#Libre de contexto|Libre de contexto]]
+		- [[#$L_1=\{ab^{n}a, n\in \mathbb{N}\}$#Regular|Regular]]
+	- [[#11#$L_2 = \{0^{n}1, n \in \mathbb{N}\}$|$L_2 = \{0^{n}1, n \in \mathbb{N}\}$]]
+		- [[#$L_2 = \{0^{n}1, n \in \mathbb{N}\}$#Libre de contexto|Libre de contexto]]
+		- [[#$L_2 = \{0^{n}1, n \in \mathbb{N}\}$#Regular|Regular]]
+- [[#12|12]]
+
+
 ![[Tp02 Gramáticas.pdf]]
 
 

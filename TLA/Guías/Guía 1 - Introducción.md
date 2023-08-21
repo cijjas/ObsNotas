@@ -1,5 +1,23 @@
 Tiene sentido mirar [[Presentaciones y Material#1. Introducción]]
 
+# Contenido
+
+- [[#1|1]]
+- [[#2|2]]
+- [[#3|3]]
+- [[#4|4]]
+- [[#5|5]]
+- [[#6|6]]
+- [[#7|7]]
+- [[#8|8]]
+				- [[#Demostración]]
+- [[#9|9]]
+- [[#10|10]]
+- [[#11|11]]
+- [[#12|12]]
+- [[#Adicional|Adicional]]
+	- [[#Adicional#1|1]]
+
 ![[Tp01 Introduccion.pdf]]
 
 # 1
@@ -83,7 +101,7 @@ Recordar [[Inducción Estructural]]
 Arranco con inducción estructural donde
 $P(base)$ : un árbol de altura 0 tiene como máximo $2^{0+1} -1 = 1$ nodos
 $P(T)$ : T tiene altura n
-##### **Demostración**
+##### Demostración
 Dos arboles de altura $k = n-1$ se les pone un nodo más arriba
 $maxNodos(T) = \overbrace{2^{k+1} -1}^{subarbol~1} + \overbrace{2^{k+1} -1}^{subarbol~2} + \overbrace{1}^{ultimo~nodo} = 2\cdot2^{k+1} - 1 = 2^{k+1+1} -1 = 2^{k+2}-1$
 
