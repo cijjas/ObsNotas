@@ -1,35 +1,33 @@
 hola
 
-
-## SO
 ```dataview
-table file.ctime as "Creado"
-from "23Q1/SO"
-sort by asc
-```
-## Paw
-```dataview
-table file.ctime as "Creado"
-from "PAW"
-sort by asc
-```
-## Protos
-```dataview
-table file.ctime as "Creado"
-from "Protos"
-sort by asc
+TAble sort(rows.file.link) as Contiene
+FROM "Economía" 
+WHERE !contains(file.folder, "_Archive") AND !contains(file.name, "_Working on")
+GROUP BY file.folder as Economía
+sort Economía asc
 ```
 
-## TLA
+```dataview
+TAble sort(rows.file.link) as Contiene
+FROM "PAW" 
+WHERE !contains(file.folder, "_Archive") AND !contains(file.name, "_Working on")
+GROUP BY file.folder as PAW
+sort Economía asc
+```
 
 
 ```dataview
-table file.ctime as "Creado"
-from "TLA"
-sort by asc
+TAble sort(rows.file.link) as Contiene
+FROM "Protos" 
+WHERE !contains(file.folder, "_Archive") AND !contains(file.name, "_Working on")
+GROUP BY file.folder as Protos
+sort Economía asc
 ```
-## Economía
+
 ```dataview
-table file.ctime as "Creado"
-from "Economía"
+TAble sort(rows.file.link) as Contiene
+FROM "TLA" 
+WHERE !contains(file.folder, "_Archive") AND !contains(file.name, "_Working on")
+GROUP BY file.folder as TLA
 ```
