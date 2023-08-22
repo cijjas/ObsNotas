@@ -43,7 +43,7 @@ luego
 $$D(p=5) = 15$$
 Finalmente:
 $$
-E_{pD} = \overbrace{-1}^{\frac{\delta q}{\delta p}} \cdot \frac{5}{15} = - 0.33
+E_{pD} = \overbrace{-1}^{\frac{\delta q}{\delta p} = \frac{\delta(20-p)}{\delta p}} \cdot \frac{5}{15} = - 0.33
 $$
 ## c
 Como la elasticidad de la demanda cuando $p = 5$ es menor que $1$ ($\frac{1}{9}\lt 1$) entonces, estamos en términos de una demanda inelástica en el punto del precio dado.
@@ -57,6 +57,17 @@ D = a-bp ~~~ \land~~~ x_{eq} = (80, 10) ~~~\land~~~ E_{dp}(x_{eq}) = -\frac{1}{4
 $$
 
 
-Sabemos que $10= a-b(80)$ y también que 
-$$\frac{-1}{4} = \frac{\frac{D_i-10}{10}}{\frac{p_i-80}{80}}$$
+Sabemos que $80= a-b(10)$ y también que 
+$$\frac{-1}{4} = \frac{\delta q}{\delta p} \frac{p}{q} = -b \frac{10}{80}\Rightarrow b = 2 \Rightarrow a = 100$$
 
+# 4
+## a
+$$
+D = 100 - p_1^{2} ~~\land~~ (75, 5)
+$$
+
+Elasticidad directa:
+$$
+E = -2(5)\cdot \frac{5}{75} = 0.67
+$$
+## b
