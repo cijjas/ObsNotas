@@ -1131,3 +1131,9 @@ T --> T : a, b
 B --> [*]
 ```
 # 12
+
+# 13
+- Siempre que L es finito, L es regular
+- Si tenemos que usar memoria, no es regular ()
+- Si L es regular, $L^{C}$ también
+- 
