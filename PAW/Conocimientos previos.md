@@ -18,6 +18,4 @@ datos
 
 # Tomcat 8 vs run jetty
 
-# IDEAS
-
 ## NO TAILWIND
