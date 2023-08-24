@@ -1,3 +1,4 @@
+
 ![[Tp04 Lenguajes Regulares Expresiones Regulares.pdf]]
 
 # 1
@@ -49,3 +50,9 @@ $$
 $$
 L = \{\omega \in \{0, 1\}^{*}: \omega~NO~contiene~dos~unos~seguidos\} \Rightarrow ER = 0^{*}10^{*}\ldots =0^{*}(10^{+})^{*}(0^{*} + 1)
 $$
+
+
+# 2
+
+## a
+
