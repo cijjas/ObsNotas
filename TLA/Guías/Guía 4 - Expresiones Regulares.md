@@ -94,7 +94,7 @@ $$
 > Comentarios acotados por /\*   \*/
 
 $$
-ER = /* (a | \ldots |z|A|\ldots|Z|) */
+ER = /* (a | \ldots |z|A|\ldots|Z|0|\ldots|9| \_|, |.|\ldots)^{*} */
 $$
 ## e
 > Expresiones compuestas por enteros, llaves y signo de suma y resta. Por ejemplo $'1+\{2-3\}'$ o $'\{\}\{21-+'$
@@ -104,3 +104,42 @@ $$
 ER = (0|\ldots | 9 | +|-|\{|\})^{*}
 $$
 
+## f
+> Idem el anterior pero con llaves que balancean.
+
+Para balancear las llaves hay que llevar un registro de cuántas llaves se abrieron, esto implica que no sea un lenguaje regular. Por ende no existe dicha expresión.
+
+
+# 3
+Indicar si se cumplen las igualdades
+## a
+$$
+R^{*} | R = R
+$$
+No se cumple pues digamos que $R = (ab) \Rightarrow abababababab = ab$ Absurdo.
+
+
+## b
+$$
+R (SR)^{*} = (RS)^{*}R
+$$
+Veamos que la izquierda genera $R(SRSRSRSRSRSR)$ siempre terminando en R intercalando R's y S's. De la misma forma en la que lo hace el lado derecho $(RSRSRSRSRSRSRS)R$ 
+
+
+## c
+$$
+(R^{*})^{*} = R^{*}
+$$
+Verdadero por propiedad 12. [[Lenguaje Regular#Propiedades de las ER]]
+
+## d
+$$
+RR^{*} = R^{+}
+$$
+Verdadero, son equivalentes.
+
+## e
+$$
+RR^{+} = R^{+}
+$$
+Falso
