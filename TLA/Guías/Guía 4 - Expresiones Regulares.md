@@ -64,3 +64,43 @@ $$ER = (- + \lambda) \cdot (0 + (1+\ldots +9)(0+1+\ldots +9)^{*}),0^{*}(0+1+\ldo
 $$
 ER = ER_a \times 10 ^{(- + \lambda) (0 | (1\ldots 9)(0\ldots 9)^{*})}
 $$
+## c
+
+> Identificadores de cualquier longitud que comiencen con una letra, que contengan letras, dígitos o guiones y que no tengan dos guiones seguidos ni terminen en guión.
+
+Sea 
+$$
+ER_A = (a|\ldots |z) |(A |\ldots | Z)
+$$
+La expresión regular que expresa cualquier letra, luego
+
+Armamos primero la ER que sería cualquier letra o cualquier numero.
+
+$$
+ER_{AN}= (ER_A | (0 |\ldots |9))
+$$
+Luego:
+$$
+ER = 
+\underbrace{(a | \ldots | z)}_{comienza~con~una~letra}
+ER_{AN}^{*}
+\cdot
+\underbrace{
+	(-  ER_{AN}^{+})^{*}
+}_{letras,digitos~o~guiones}
+$$
+
+## d
+> Comentarios acotados por /\*   \*/
+
+$$
+ER = /* (a | \ldots |z|A|\ldots|Z|) */
+$$
+## e
+> Expresiones compuestas por enteros, llaves y signo de suma y resta. Por ejemplo $'1+\{2-3\}'$ o $'\{\}\{21-+'$
+
+
+$$
+ER = (0|\ldots | 9 | +|-|\{|\})^{*}
+$$
+
