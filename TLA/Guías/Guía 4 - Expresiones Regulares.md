@@ -111,6 +111,7 @@ Para balancear las llaves hay que llevar un registro de cuántas llaves se abrie
 
 
 # 3
+[[Lenguaje Regular#Equivalencia de ER's]]
 Indicar si se cumplen las igualdades
 ## a
 $$
@@ -142,4 +143,13 @@ Verdadero, son equivalentes.
 $$
 RR^{+} = R^{+}
 $$
-Falso
+Falso pues el lado $RR \ne R$ 
+
+
+# 4
+Construir un AFD mínimo con 
+
+# a
+$$
+(abc)^{*}
+$$
