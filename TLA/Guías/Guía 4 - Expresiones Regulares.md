@@ -148,8 +148,73 @@ Falso pues el lado $RR \ne R$
 
 # 4
 Construir un AFD mínimo con 
+[[Lenguaje Regular#Conversión de ER a AFD - Autómatas Finitos Deterministicos]]
 
-# a
+## a
 $$
 (abc)^{*}
 $$
+
+Construyo de a poco
+```mermaid
+stateDiagram
+direction LR
+[*] --> I
+I --> A : L
+A --> B : a
+B --> C : b
+C --> D : c
+D --> F : L
+I --> F : L
+D --> A : L
+F --> [*]
+```
+$$
+\begin{cases}
+\lambda(I) = A, F\\
+\lambda(A) = A\\
+\lambda(B) = B\\
+\lambda(C) = C\\
+\lambda(D) = D, F, A\\
+\lambda(F) = F\\
+\end{cases}
+$$
+
+| $\delta$ | a   | b   | c       |
+| -------- | --- | --- | ------- |
+| $* \rightarrow I, A, F$    | B   | T   | T       |
+| B        | T   | C   | T       |
+| C        | T   | T   | D, F, A |
+| $* D, F, A$  | B   | T   | T       | 
+
+AD, B, C
+```mermaid
+stateDiagram
+direction LR
+[*] --> AD
+AD --> B : a
+B --> C : b
+C --> AD : c
+AD --> T : b, c
+B --> T : a, c
+C --> T : a, b
+AD -->[*]
+T --> T : a, b, c
+```
+
+## b
+$$
+a^{+}bc^{*}
+$$
+```mermaid
+stateDiagram
+direction LR
+[*] --> I 
+I --> A : a
+A --> A : a
+A --> B : b
+B --> B : c
+B --> [*] 
+```
+| $\delta$ |     |     | 
+| -------- | --- | --- |

@@ -116,6 +116,15 @@ Obvio que entonces vale también que  $ER \Rightarrow AFND-\lambda$
 ## Método de composición de autómatas
 > Este autómata tiene un único estado de aceptación y ningún arco que entre al estado inicial o que salga del estado de aceptación.
 
+### $M = M_1 +M_2$
+![[Pasted image 20230824192610.png]]
+
+### $M = M_1\cdot M_2$
+
+![[Pasted image 20230824192728.png]]
+
+### $M = M_1^{*}$
+![[Pasted image 20230824192806.png]]
 
 #### Ejemplo
 
