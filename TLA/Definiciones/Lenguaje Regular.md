@@ -13,9 +13,9 @@
 ![[Pasted image 20230823151811.png]]
 
 # Precedencia de operadores
-1. *
-2. .
-3. +
+1. '*'
+2. '.'
+3. '+'
 
 # Propiedades de las ER
 
@@ -23,6 +23,24 @@
 > Dos ER's $r_1, r_2$ son equivalentes si describen el mismo lenguaje, es decir $L(r_1) = L(r_2)$
 
 ## Propiedades 
+
+1. $\alpha + (\beta + \gamma) = (\alpha + \beta) +\gamma$
+2. $\alpha + \beta = \beta + \alpha$
+3. $\alpha + \varnothing = \alpha$
+4. $\alpha +\alpha = \alpha$
+5. $\alpha \cdot \lambda = \alpha$
+6. $\alpha \cdot \varnothing = \varnothing$
+7. $\alpha \cdot (\beta \cdot \gamma) = (\alpha \cdot \beta) \cdot \gamma$
+8. $\alpha\cdot(\beta +\gamma) = \alpha\beta +\alpha\gamma ~~ \land ~~ (\beta +\gamma)\cdot \alpha = \beta\alpha +\gamma\alpha$
+9. $\lambda^{*} = \lambda$
+10. $\varnothing^{*}=\lambda$
+11. $\alpha\cdot\alpha^{*} = \alpha^{*}\cdot \alpha$
+12. $\alpha^{*}= \alpha^{*}\alpha^{*}= (\alpha^{*})^{*}$
+13. $\alpha^{*} = \lambda + \alpha \alpha^{*}$
+14. $(\alpha + \beta)^{*}=(\alpha^{*}+ \beta^{*})^{*}$
+15. $(\alpha + \beta)^{*} =(\alpha^{*} \cdot \beta^{*})^{*} = (\alpha^{*}+ \beta^{*})\cdot \alpha^{*}$
+16. $\alpha \cdot(\beta\cdot\alpha)^{*}= (\alpha\cdot \beta)^{*}\alpha$
+
 ![[Pasted image 20230823152322.png]]
 
 
@@ -45,11 +63,11 @@ Sea $x_i = \alpha_{i0}+\alpha_{i1}x_1 + \ldots + \alpha_{in}x_n$. Donde cada $a_
 A una ecuación de la forma $X = \alpha X + \beta$ donde $\alpha, \beta$ son ER, se llama **ecuación fundamental** de ER's.
 
 > **Lema de Arden**
-> $$
-X = \alpha X + \beta \iff X= a^{*}\beta ~y~es~unica~si~ \lambda \notin L(\alpha)
-$$
-![[Pasted image 20230823154439.png]]
+> $$X = \alpha X + \beta \iff X= a^{*}\beta ~y~es~unica~si~ \lambda \notin L(\alpha)$$
 
+
+![[Pasted image 20230823154439.png]]
+-
 #### Ejemplo
 ```mermaid
 stateDiagram
@@ -100,6 +118,7 @@ Obvio que entonces vale también que  $ER \Rightarrow AFND-\lambda$
 
 
 #### Ejemplo
+
 $ER= aa^{*}b+b$
 
 
