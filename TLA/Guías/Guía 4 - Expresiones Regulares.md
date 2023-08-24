@@ -61,3 +61,6 @@ $$ER = (- + \lambda) \cdot (0 + (1+\ldots +9)(0+1+\ldots +9)^{*}),0^{*}(0+1+\ldo
 ## b
 > Constantes con notación exponencial
 
+$$
+ER = ER_a \times 10 ^{(- + \lambda) (0 | (1\ldots 9)(0\ldots 9)^{*})}
+$$
