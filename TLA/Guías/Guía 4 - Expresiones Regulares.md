@@ -55,4 +55,9 @@ $$
 # 2
 
 ## a
+> Constantes reales con signo sin ceros no significativos
+
+$$ER = (- + \lambda) \cdot (0 + (1+\ldots +9)(0+1+\ldots +9)^{*}),0^{*}(0+1+\ldots +9)^{*}(1+\ldots +9 + \lambda)$$
+## b
+> Constantes con notación exponencial
 
