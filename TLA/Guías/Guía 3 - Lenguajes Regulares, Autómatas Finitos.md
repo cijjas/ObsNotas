@@ -1133,8 +1133,22 @@ B --> [*]
 # 12
 
 # 13
+[[Lenguaje Regular]]
 - Siempre que L es finito, L es regular
 - Si tenemos que usar memoria, no es regular ()
 - Si L es regular, $L^{C}$ también
 
-
+a.  Regular
+b. Regular
+c. Regular
+d. Regular
+e. NO Regular ----------------------- PREGUNTAR
+f. Regular
+g. NO regular
+h. Regular
+i. Regular
+j. NO Regular ----------------PREGUNTAR
+k. Regular
+l. Regular
+m. Regular
+n. Regular

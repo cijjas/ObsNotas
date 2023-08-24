@@ -1,8 +1,8 @@
 > Dado un alfabeto $\Sigma$, los símbolos $\varnothing$ , $\lambda$ y los operadores $+$ (unión), $.$ (concatenación), ) y $*$ (clausura) y los paréntesis $($ y$)$, definimos una **EXPRESIÓN REGULAR (ER)** sobre el alfabeto $\Sigma$ como
 > Base:
-> - El símbolo es una ER.
-> - El símbolo es una ER.
-> - Cualquier símboloa es una ER
+> - El símbolo $\varnothing$ es una ER.
+> - El símbolo $\lambda$ es una ER.
+> - Cualquier símbolo $\alpha \in \Sigma$ a es una ER
 > Paso inductivo:
 > - Si $\alpha$ y $\beta$ son ER, entonces $\alpha + \beta$ es una ER.
 > - Si $\alpha$ y $\beta$ son ER, entonces $\alpha \cdot \beta$ es una ER.
@@ -16,8 +16,6 @@
 1. *
 2. .
 3. +
-
-
 
 # Propiedades de las ER
 
@@ -101,3 +99,72 @@ Obvio que entonces vale también que  $ER \Rightarrow AFND-\lambda$
 > Este autómata tiene un único estado de aceptación y ningún arco que entre al estado inicial o que salga del estado de aceptación.
 
 
+#### Ejemplo
+$ER= aa^{*}b+b$
+
+
+
+
+a:
+```mermaid
+stateDiagram
+direction LR
+[*] --> q0
+q0 --> qf: a
+qf --> [*]
+```
+
+a*
+```mermaid
+stateDiagram
+direction LR
+[*] --> q0
+q0 --> q1 : L
+q1 --> qi: a
+qi --> q1:L
+qi --> qf : L
+q0 --> qf : L
+qf --> [*]
+```
+
+```mermaid
+stateDiagram
+direction LR
+[*] --> q0
+q0 --> q0: a
+q0 --> [*]
+```
+$aa^{*}b$
+```mermaid
+stateDiagram
+direction LR
+[*] --> q0
+q0 --> q1 : a
+q1 --> q2 : L
+q2--> q2 : a
+q2 --> q3 : L
+q3 --> q4 : b
+q4 -->[*]
+```
+
+```mermaid
+stateDiagram
+direction LR
+[*] --> I
+I --> A : L
+I --> D : L
+A --> B : a
+B --> B : a
+B --> C : b
+D --> E : b
+E-->[*]
+C-->[*]
+```
+```mermaid
+stateDiagram
+direction LR
+[*] --> I
+I --> I : a
+I --> E : b
+E --> [*]
+```

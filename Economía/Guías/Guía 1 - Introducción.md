@@ -1,4 +1,4 @@
-![[guia 0.pdf]]
+Intro a la [[Economía]].[[Demanda]]. [[Oferta]].![[guia 0.pdf]]
 
 
 
