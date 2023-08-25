@@ -216,5 +216,61 @@ A --> B : b
 B --> B : c
 B --> [*] 
 ```
-| $\delta$ |     |     | 
+
+
+| $\delta$        | a   | b   | c   |
+| --------------- | --- | --- | --- |
+| $\rightarrow I$ | A   | T   | T   |
+| A               | A   | B   | T   |
+| $*B$            | T   | T   | B   |
+| T               | T   | T   | T   | 
+
+B, I,T, A
+
+```mermaid
+stateDiagram
+direction LR
+[*] --> I
+I --> A: a
+I --> T :b, c
+A --> A: a
+A --> B: b
+A --> T: c
+B --> [*]
+B --> T : a, b
+B --> B : c
+T --> T : a, b, c
+```
+
+## c
+$$
+(a|b)^{*}ab
+$$
+```mermaid
+stateDiagram
+direction LR
+[*] --> I 
+I --> A: a
+I --> B: b
+A --> D : L
+B --> D : L
+D --> I : L
+D --> E : a
+E --> F : b
+F --> [*]
+```
+
+$$
+\begin{cases}
+\lambda(I) = I\\
+\lambda(A) = A, D\\
+\lambda(B) = B, D\\
+\lambda(D) = D, I\\
+\lambda(E) = E\\
+\lambda(F) = F\\
+\end{cases}
+$$
+
+| $\delta$ | a   | b   |
 | -------- | --- | --- |
+|          |     |     |
