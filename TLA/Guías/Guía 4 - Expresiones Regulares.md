@@ -452,6 +452,33 @@ q_0= a^{*}b( ba^{*}b)^{*}(ab +aa( ba^{*}b)^{*}a)^{*}
 $$
 Chequeando en [REGEQ](https://bakkot.github.io/dfa-lib/regeq.html) vemos que nos dio bien comparando con el resultado.
 
+## b
+
+$$
+\begin{cases}
+q_0 = aq_1+bq_0\\
+q_1 = aq_2+bq_1\\
+q_2 = aq_2+bq_1 + \lambda\\
+\end{cases}\tag{1,2, 3}
+$$
+Arden con (1),(2),(3).
+$$
+\begin{cases}
+q_0 = b^{*}aq_1\\
+q_1 = b^{*}aq_2\\
+q_2 = a^{*}(bq_1+\lambda) = a^{*}bq_1+a^{*} \\
+\end{cases}\tag{4,5,6}
+$$
+(6) en (5) 
+$$
+q_1 = b^{*}a(a^{*}bq_1+a^{*}) =  b^{*}aa^{*}bq_1+b^{*}aa^{*} \tag{7}
+$$
+Nuevamente por Arden
+
+
+
+
+
 # 6
 Mostrar [[Lenguaje Regular#Equivalencia de ER's]]
 Para demostrar la equivalencia de ER's tenemos dos opciones,  demostrar que no son equivalentes mediante un contraejemplo o mostrar que lo son llegando de una a la otra aplicando [[Lenguaje Regular#Propiedades]]
