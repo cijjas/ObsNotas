@@ -29,16 +29,16 @@
 3. $\alpha + \varnothing = \alpha$
 4. $\alpha +\alpha = \alpha$
 5. $\alpha \cdot \lambda = \alpha$
-6. $\alpha \cdot \varnothing = \varnothing$
+6. $\alpha \cdot \varnothing = \varnothing \cdot \alpha= \varnothing$
 7. $\alpha \cdot (\beta \cdot \gamma) = (\alpha \cdot \beta) \cdot \gamma$
 8. $\alpha\cdot(\beta +\gamma) = \alpha\beta +\alpha\gamma ~~ \land ~~ (\beta +\gamma)\cdot \alpha = \beta\alpha +\gamma\alpha$
 9. $\lambda^{*} = \lambda$
 10. $\varnothing^{*}=\lambda$
-11. $\alpha\cdot\alpha^{*} = \alpha^{*}\cdot \alpha$
+11. $\alpha\cdot\alpha^{*} = \alpha^{*}\cdot \alpha = \alpha^{+}$
 12. $\alpha^{*}= \alpha^{*}\alpha^{*}= (\alpha^{*})^{*}$
 13. $\alpha^{*} = \lambda + \alpha \alpha^{*}$
-14. $(\alpha + \beta)^{*}=(\alpha^{*}+ \beta^{*})^{*}$
-15. $(\alpha + \beta)^{*} =(\alpha^{*} \cdot \beta^{*})^{*} = (\alpha^{*}+ \beta^{*})\cdot \alpha^{*}$
+14. $(\alpha + \beta)^{*}=(\alpha^{*}+ \beta^{*})^{*} = \alpha^{*}(\beta\alpha^{*})^{*}$
+15. $(\alpha + \beta)^{*} =(\alpha^{*} \cdot \beta^{*})^{*} = (\alpha^{*}+ \beta^{*})\cdot \alpha^{*} = (\alpha^{*}\beta)^{*}\alpha^{*}$
 16. $\alpha \cdot(\beta\cdot\alpha)^{*}= (\alpha\cdot \beta)^{*}\alpha$
 
 ![[Pasted image 20230823152322.png]]
