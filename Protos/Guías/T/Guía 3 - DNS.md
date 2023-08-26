@@ -88,4 +88,3 @@ La razón es que el TTL aún no ha precedido y entonces no se actualiza la cache
 > ¿Por qué tomarse la molestia de usar Split-horizon al configurar un servidor DNS? ¿Por qué no asociar el nombre del host únicamente a la IP pública?
 
 Una ventaja es que el host que esté dentro de la red local podrá enviar paquetes IP directamente al host destino, sin necesidad de la intervención de un router/firewall. Además, si se usa el mismo dominio en forma privada que en forma pública, permite establecer que algunos nombres de hosts (y su IP privada) no sean visibles por queries realizadas fuera de la organización, y cuanto menos información pública exista, menos riesgos de vulnerabilidad habrá.
-

@@ -3,4 +3,7 @@
 [[Guía]]
 
 # Teórica
-[[Protos/Guías/T/Guía 1 - Introducción|Guía 1 - Introducción]]
+```dataview
+table
+from "Protos/Guías/T"
+```

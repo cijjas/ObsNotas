@@ -242,6 +242,25 @@ E2 --> E2 : 1, 4, 7
 ## C
 Palabras que no tengan $abaab$
 
+Construir este autómata, no es fácil por eso aplicamos la técnica del complemento en el cual armamos el automata que contenga la cadena $abaab$ y luego aplicamos transformaciones para obtener su complemento.
+
+```mermaid
+stateDiagram 
+direction lr
+[*] --> p
+p --> p : a, b
+p --> q : a
+q --> r : b
+r --> s : a
+s --> t : a
+t --> u : b
+u --> u : a, b
+u --> [*]
+```
+Luego construimos el AFD, y en lo posible minimizamos. Hecho esto convertimos los finales en no finales y viceversa, y obtenemos nuestro AFD resultante.
+
+
+Luego hacer
 ```mermaid
 stateDiagram
 direction LR
