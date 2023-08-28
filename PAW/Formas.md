@@ -35,5 +35,9 @@
 
 ---
 
+#PAW No poner logica de negocios en el modulo webapp (muy penalizado)
+
+![[Pasted image 20230828144343.png]]
+
 
 ---
