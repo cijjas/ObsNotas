@@ -61,13 +61,14 @@ La idea en sí tiene una falla intrínseca.
 - Se puede producir un exceso de demanda
 	- Esto puede ser malo porque algunos consumidores se pueden quedar sin el producto y se crea un desabastecimiento.
 	- Se genera un mercado paralelo en el que quizás se vende inclusive más caro que el precio en equilibrio.
-	- Provoca una pérdida irrecuperable de la **eficiencia** (producir menos, menos calidad, menos trabajo, se desaprovecha los recursos disponibles, desperdicio de factores econmómicos, se achica el mercado oficial para ser reemplazado por un mercado paralelo).
+	- Provoca una [Pérdida irrecuperable de la eficiencia](https://es.wikipedia.org/wiki/P%C3%A9rdida_irrecuperable_de_eficiencia) (producir menos, menos calidad, menos trabajo, se desaprovecha los recursos disponibles, desperdicio de factores econmómicos, se achica el mercado oficial para ser reemplazado por un mercado paralelo).
 	- Si se mueve la curva de oferta (ayudandolos) para lograr el equilibrio se de en Q_D (P_max x D) los inspectores cagan el sistema. 
 
 
 ![[Pasted image 20230829114649.png]]
 
-
+![[Pasted image 20230829115756.png]]
+![[Pasted image 20230829115847.png]]
 
 ## Precios mínimos
 
@@ -76,3 +77,13 @@ Favorece al productor para que produzca y abastezca.
 - Para que no disminuya el empleo ya que una fábrica cierra por ejemplo.
 
 ![[Pasted image 20230829114708.png]]
+
+
+
+# Impuestos
+![[Pasted image 20230829121245.png]]
+- El área amarilla es la perdida irrecuperable de eficiencia
+- Ingresos por impuestos es la guita que te roba el estado.
+
+# Subvención / Subsidio
+![[Pasted image 20230829121723.png]]
