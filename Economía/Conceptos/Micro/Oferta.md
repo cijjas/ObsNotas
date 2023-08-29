@@ -49,8 +49,30 @@ En relación con el [[Demanda#Excedente del Consumidor]].
 #### Ejemplo
 - Si un productor vende un artículo por $80 y sus costos de producción son $50, su excedente del proveedor sería $30 ($80 - $50).
 - El excedente del proveedor representa el beneficio adicional que un productor obtiene al vender un producto a un precio superior a los costos de producción.
+	
+# Regulación de precios
 
-# Gobernadores
 En algunos mercados, el objetivo de los políticos es intervenir y evitar que los precios alcancen el precio de equilibrio 
-- Precios máximos
-- Precios mínimos
+## Precios máximos
+- Proteger al consumidor para que la gente. Para un producto básico. 
+- Jamás se lo puede ubicar por encima del equilibrio
+
+La idea en sí tiene una falla intrínseca.
+- Se puede producir un exceso de demanda
+	- Esto puede ser malo porque algunos consumidores se pueden quedar sin el producto y se crea un desabastecimiento.
+	- Se genera un mercado paralelo en el que quizás se vende inclusive más caro que el precio en equilibrio.
+	- Provoca una pérdida irrecuperable de la **eficiencia** (producir menos, menos calidad, menos trabajo, se desaprovecha los recursos disponibles, desperdicio de factores econmómicos, se achica el mercado oficial para ser reemplazado por un mercado paralelo).
+	- Si se mueve la curva de oferta (ayudandolos) para lograr el equilibrio se de en Q_D (P_max x D) los inspectores cagan el sistema. 
+
+
+![[Pasted image 20230829114649.png]]
+
+
+
+## Precios mínimos
+
+Favorece al productor para que produzca y abastezca.
+- Productos básicos
+- Para que no disminuya el empleo ya que una fábrica cierra por ejemplo.
+
+![[Pasted image 20230829114708.png]]
