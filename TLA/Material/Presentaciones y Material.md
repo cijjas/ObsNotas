@@ -21,3 +21,9 @@
 # 4. Lenguajes Regulares
 ![[3. Expresiones Regulares(1).pdf]]
 ![[Clase 4(1).pdf]]
+
+
+
+# 5. 
+
+![[Clase 5.pdf]]
