@@ -728,7 +728,7 @@ Aprendizaje Automático:** Los filtros Bayesianos pueden adaptarse y aprender de
     
 Desventajas:
 
-- Falsos Positivos/Negativos:** Puede haber casos donde los correos legítimos sean marcados como spam (falsos positivos) o donde el spam pase desapercibido (falsos negativos).
+- **Falsos Positivos/Negativos:** Puede haber casos donde los correos legítimos sean marcados como spam (falsos positivos) o donde el spam pase desapercibido (falsos negativos).
  - **Dependencia del Entrenamiento:** La precisión de los filtros Bayesianos depende de la calidad y cantidad del conjunto de entrenamiento.
 
 Cada técnica tiene sus propias ventajas y desventajas, y a menudo, las soluciones anti-spam efectivas combinan varias técnicas para mejorar la detección y reducir tanto el spam como los falsos positivos.
