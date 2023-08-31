@@ -652,5 +652,132 @@ server {
 ```
 
 
-## Configuración de DNS Server
+# Configuración de DNS Server
 
+## 48 
+
+Para ver los logs `journalctl -f` .
+Se puede configurar las zonas en named.conf definiendo la zona que va a ser utilizada que está especificada en /etc/bind/zones.
+
+## 53
+
+
+# SMTP
+
+## 54
+Si quiero enviar de forma directa un correo electrónico a una casilla del dominio itba.edu.ar. tengo que conectarme a los servidores que me da `dig +short MX itba.edu.ar.` . En donde en realidad tengo que agarrar el de prioridad más alta.
+
+`dig +short MX itba.edu.ar | sort -n`
+
+## 55
+![[Pasted image 20230830202347.png]]
+No puedo porque tengo el IP bloqueado
+![[Pasted image 20230830202829.png]]
+
+
+### Relay
+Una configuración de relay es un servidor que recibe correos y los envía a su destinatario. Actúa como intermediario o sea que es un poco parecido a un proxy. Por seguridad también puede ser implementado.
+
+
+## 56
+
+`mailq` nos deja fijarnos los mails en la cola para enviar.
+
+Si quiero mandar los logs a otro lado, agrego a main.cf
+
+	`maillog_file=/var/log/postfix.log`
+
+
+## 60 
+ 
+### SPF (Sender Policy Framework):
+
+**Ventajas:**
+- **Validación de Origen:** SPF ayuda a verificar si el servidor que envía un correo electrónico tiene permiso para enviar mensajes en nombre del dominio especificado.
+- **Reducción de Spoofing:** Ayuda a prevenir el envío de correos electrónicos falsificados desde direcciones de dominio legítimas.
+- **Fácil Implementación:** SPF es relativamente fácil de configurar en los registros DNS del dominio.
+    
+**Desventajas:**
+- **No Evita Totalmente el Spam:** SPF no elimina directamente el spam, solo ayuda a detectar direcciones de remitente falsificadas.
+- **Requiere Mantenimiento:** Si se implementa incorrectamente, los correos legítimos pueden ser marcados como spam.
+- **No Aborda el Contenido:** SPF no tiene en cuenta el contenido del correo electrónico.
+
+### DomainKeys (o DKIM - DomainKeys Identified Mail):
+**Ventajas:**
+- **Autenticación y Firma:** DKIM firma los correos electrónicos con una clave criptográfica, lo que permite a los servidores de destino autenticar el correo electrónico.
+- **Reducción del Spoofing:** Similar a SPF, ayuda a prevenir la falsificación de remitentes.
+- **Mejora la Entrega:** Los correos con firma DKIM tienen una mayor probabilidad de ser entregados en la bandeja de entrada.
+    **Desventajas:**
+- **Configuración Compleja:** Configurar DKIM puede ser complejo, especialmente en organizaciones grandes.
+- **Necesita Mantenimiento:** Las claves DKIM deben ser rotadas y administradas adecuadamente.
+### Grey Listing:
+
+**Ventajas:**
+- **Efectivo contra Spammers Automáticos:** Los spammers automatizados a menudo no reintentan enviar correos después del primer intento fallido.
+- **Reduce el Volumen de Spam:** Puede reducir significativamente la cantidad de correos basura que llegan a la bandeja de entrada.
+**Desventajas:**   
+- **Retraso en la Entrega:** La técnica de Grey Listing puede causar retrasos en la entrega legítima de correos electrónicos, ya que los servidores deben reintentar el envío.
+- **No Efectivo contra Spammers Persistentes:** Los spammers que reenvían automáticamente el correo pueden sortear esta técnica.
+
+
+### Filtros Bayesianos:
+**Ventajas:**
+Aprendizaje Automático:** Los filtros Bayesianos pueden adaptarse y aprender de las características de los correos electrónicos a lo largo del tiempo.
+    - **Flexibilidad:** Pueden ser altamente personalizables según las preferencias del usuario.
+    - **Identificación de Contenido Malicioso:** Pueden ayudar a identificar contenido malicioso, no solo spam.
+    
+Desventajas:
+
+- Falsos Positivos/Negativos:** Puede haber casos donde los correos legítimos sean marcados como spam (falsos positivos) o donde el spam pase desapercibido (falsos negativos).
+ - **Dependencia del Entrenamiento:** La precisión de los filtros Bayesianos depende de la calidad y cantidad del conjunto de entrenamiento.
+
+Cada técnica tiene sus propias ventajas y desventajas, y a menudo, las soluciones anti-spam efectivas combinan varias técnicas para mejorar la detección y reducir tanto el spam como los falsos positivos.
+
+
+## 61
+`dig +short TXT itba.edu.ar`
+En la salida se puede ver la versión spf usada y los ips que pueden envíar mail y las ips autorizadas por algunos dminios conocidos.
+
+makefile
+
+```c
+v=spf1 include:_spf.google.com ip4:190.104.250.100 ip4:190.104.250.101 ip4:52.67.50.43 ip4:54.94.246.207 ip4:52.67.178.216 ip4:52.67.194.156 ip4:200.32.57.124 include:spf.perfit-mail.net include:spf.mandrillapp.com include:_spf.embluemail.com include:mh.blackboard.com ~all
+```
+
+
+- `v=spf1`: Indica la versión 1 del estándar SPF.
+    
+- `include:_spf.google.com`: Indica que se deben incluir las direcciones IP autorizadas del dominio `_spf.google.com`.
+    
+- `ip4:190.104.250.100`, `ip4:190.104.250.101`, ...: Estas son direcciones IPv4 específicas que están autorizadas para enviar correos electrónicos en nombre del dominio. Cualquier servidor que tenga una de estas direcciones IP puede enviar correos en nombre del dominio.
+    
+- `include:spf.perfit-mail.net`, `include:spf.mandrillapp.com`, ...: Similar al caso de Google, estos son otros dominios cuyas direcciones IP autorizadas están permitidas para enviar correos electrónicos en nombre del dominio.
+    
+- `~all`: Esta es una directiva que indica la política de SPF. El símbolo tilde (~) seguido de `all` significa que las direcciones IP que no coincidan con ninguna de las reglas anteriores "fallarán suavemente". En otras palabras, los correos electrónicos enviados desde direcciones IP no autorizadas no serán rechazados de inmediato, pero pueden ser tratados como posibles correos no deseados.
+
+# Codificaciones BASE
+
+## 62
+convertimos las letras en binario
+
+- H = 72
+- O = 79
+-  = 32
+- L =76
+- A =65
+Entonces
+- 1001000
+- 1001111
+- 100000
+- 1001100
+- 1000001
+
+y despues codifico a base64
+
+SE8gTEE=
+
+## 63
+
+chau
+
+## 64
