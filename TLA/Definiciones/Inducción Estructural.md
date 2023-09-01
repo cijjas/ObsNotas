@@ -15,7 +15,7 @@ P(estructura) es V si
 - P(construcciones) es V asumiento P(anterior) es V
 
 
-> La forma de saber que se puede usar es si la proposicion y la definicipon recursiva son visualizables.
+> La forma de saber que se puede usar es si la proposición y la definición recursiva son visualizables.
 
 #### Ejemplo
 

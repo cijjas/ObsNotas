@@ -9,10 +9,8 @@
 > La problemática es que mucha gente prefiere asesores online pero no existe una opción fácil social donde un asesor mantiene una red social tipo foro para dar recomendaciones. Los usuarios después pueden compartir sus ganancias y ratear asesores.  Se combina estadísticas intuitivas, herramientas de conversión de moneda y tecnología de reconocimiento óptico de caracteres (OCR) para escanear facturas y cargarlas rápidamente y ofrecer una experiencia completa de seguimiento de gastos y planificación económica. Una herramienta de gestión financiera que ofrece una variedad de funcionalidades diseñadas para ayudarte a administrar tus gastos de manera efectiva y tomar decisiones informadas mediante la integración de asesores online.
   
 [[#Billio más]]
-# Nextdoor
 
-> NextDoor aborda la problemática de la falta de conexión y colaboración entre vecinos cercanos en comunidades residenciales. Proporciona una plataforma en línea que facilita la comunicación y la interacción entre vecinos, promoviendo un sentido de comunidad y seguridad. La aplicación busca mejorar la comunicación local, informar sobre eventos y cuestiones de seguridad, y ofrecer un canal de colaboración directa con las garitas de seguridad, creando así un ambiente más conectado y seguro en vecindarios.
-
+# [[Neibo]]
 
 [[#Nextdoor más]]
 # Bulko
