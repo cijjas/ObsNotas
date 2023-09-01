@@ -18,3 +18,18 @@
 - NO ofrecen:
 	- Mínimo de demora o latencia
 	- Mínimo de ancho de banda
+
+
+
+# UDP
+
+> Transporta datos de manera no confiable entre hosts. Tampoco es orientado a conexión.
+
+![[Pasted image 20230901171312.png]]
+
+
+# TCP
+
+Semejante a UDP pero orientado a conexión.
+
+ACK reconoce cuantos bytes recibió.
