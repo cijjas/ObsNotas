@@ -781,3 +781,105 @@ SE8gTEE=
 chau
 
 ## 64
+
+```base64
+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
+```
+Cuando lo pues en un decoder parecia tener un header que indicaba que era una image, entonces lo metí en https://codebeautify.org/base64-to-image-converter y salió esto:
+![[Pasted image 20230903140858.png]]
+
+
+El encoding es de 3232 chars por ende ocupa 3232 bytes que son approx 3.16 kB. La imagen en sí pesa 2.4kb. claramente hay una compresión importante.
+
+
+$$
+Tam = (mensaje~en~bytes * 4) / 3
+$$
+
+que si ingresamos nuestro valores de arriba vemos que da aproximadamente acertado.
+
+Si me quieren mandar una imagen de 9MB con base 64 y yo tengo una capacidad máxima de 10MB no va a llegar pues el mensaje codificado pesa 12MB aproximadamente.
+
+
+## 66
+### Caracteres no seguros en URLs
+> Base64 utiliza algunos caracteres que son considerados no seguros en URLs, como '+' y '/'. Si se utiliza Base64 directamente en una URL, es posible que se generen problemas de interpretación o que los caracteres sean interpretados de manera incorrecta por algunos navegadores o servicios web. Para evitar este problema, se recomienda realizar una sustitución segura de estos caracteres.
+
+# MIME
+
+## 67
+
+1. **Caracteres Especiales y Límites de Línea**: Los correos electrónicos generalmente están compuestos por texto, pero pueden contener caracteres especiales que tienen significados especiales en el formato de correo electrónico, como el símbolo "<" o ">". Además, los correos electrónicos a menudo tienen límites de línea, lo que significa que no se pueden superar ciertas longitudes de línea sin problemas de interpretación. La codificación Quoted Printable y Base64 permite representar estos caracteres especiales de manera segura y dividir correctamente el contenido en líneas más cortas.
+    
+2. **Transporte de Datos Binarios**: Los correos electrónicos no se limitan al texto, sino que también pueden incluir datos binarios, como archivos adjuntos o imágenes. Estos datos binarios pueden contener bytes que no son seguros de transmitir directamente a través de correo electrónico, ya que algunos sistemas pueden interpretarlos de manera incorrecta o eliminarlos. La codificación Base64 convierte estos datos binarios en una forma segura de transmitirlos en un formato de texto ASCII.
+    
+3. **Compatibilidad Internacional**: El correo electrónico es un medio de comunicación global, y diferentes sistemas y clientes de correo pueden utilizar conjuntos de caracteres y codificaciones diferentes. Quoted Printable y Base64 son estándares ampliamente reconocidos y aceptados en la mayoría de los sistemas de correo electrónico, lo que garantiza la compatibilidad internacional y la correcta interpretación del contenido.
+    
+4. **Legibilidad**: Quoted Printable se utiliza principalmente para contenido de texto y asegura que el texto sea legible para los destinatarios, incluso si contiene caracteres especiales o no comunes. Esto es importante para garantizar que los mensajes de correo electrónico se muestren correctamente en diferentes clientes de correo.
+    
+5. **Seguridad**: Algunos caracteres o secuencias de bytes en datos binarios pueden confundirse con comandos o etiquetas de correo electrónico, lo que podría llevar a problemas de seguridad. La codificación Base64 ayuda a evitar estas interpretaciones incorrectas y garantiza la seguridad en la transmisión de datos binarios a través del correo electrónico.
+
+
+## 68
+
+```
+h=F3l=E1 c=F3m=F3
+t=E9 v=E1
+=2D-=20
+```
+
+
+```
+hólá cómó
+té vá
+--
+```
+
+
+## 69
+
+
+**Content-ID**:
+
+- **Función**: El encabezado Content-ID se utiliza para identificar un contenido en particular dentro de un mensaje de correo electrónico o en una parte de un mensaje MIME (Multipurpose Internet Mail Extensions). Es comúnmente utilizado para hacer referencia a partes del contenido, como imágenes incrustadas en el cuerpo del mensaje o cualquier otro elemento multimedia.
+- **Ejemplo**: `Content-ID: <imagen001@example.com>`
+
+**Content-Disposition**:
+
+- **Función**: El encabezado Content-Disposition se utiliza para indicar cómo el contenido debe ser presentado o manejado cuando se visualiza o descarga. Puede especificar si el contenido debe mostrarse en línea, abrirse en una ventana emergente, o descargarse como archivo adjunto.
+- **Ejemplo**: `Content-Disposition: attachment; filename="archivo.pdf"`
+
+Formatos de Media-Type:
+
+i. **multipart/digest**:
+
+- **Descripción**: multipart/digest es un tipo de contenido MIME utilizado principalmente en el contexto de los correos electrónicos. Se utiliza para agrupar varios mensajes de correo electrónico en un solo mensaje, generalmente para fines de resumen o para enviar noticias agrupadas en un solo correo electrónico.
+
+ii. **multipart/mixed**:
+
+- **Descripción**: multipart/mixed es un tipo de contenido MIME que se utiliza para combinar varias partes de contenido en un solo mensaje. Cada parte puede tener su propio tipo de contenido y disposición. Esto es comúnmente utilizado en correos electrónicos que incluyen archivos adjuntos junto con el texto.
+
+iii. **message/rfc822**:
+
+- **Descripción**: message/rfc822 es un tipo de contenido MIME utilizado para representar un mensaje de correo electrónico completo en otro mensaje de correo electrónico. Esto se usa a menudo para reenviar o adjuntar un mensaje completo dentro de otro mensaje.
+
+iv. **multipart/alternative**:
+
+- **Descripción**: multipart/alternative es un tipo de contenido MIME utilizado para proporcionar múltiples versiones del mismo contenido en diferentes formatos. Por ejemplo, un correo electrónico puede incluir una versión de texto sin formato y una versión HTML del mismo mensaje.
+
+v. **multipart/related**:
+
+- **Descripción**: multipart/related es un tipo de contenido MIME utilizado para relacionar varias partes de contenido, donde una parte puede hacer referencia a recursos (como imágenes) en otras partes. Es comúnmente utilizado en correos electrónicos que contienen contenido HTML enriquecido con imágenes incrustadas.
+
+
+
+# Telnet
+## 70
+
+mi servidor ejecutable `/usr/sbin/telnetd`
+Tiro un `ip addr` para ver cual es mi address y una vez que se conecta me pide login como si fuera un usuario completamente nuevo de mi propia compu. 
+
+Para conectarme a alguna ip tengo que hacer `telnet IP_A_CONECTARSE`
+
+
+# 71
